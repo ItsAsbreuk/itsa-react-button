@@ -1,0 +1,139 @@
+$btn-color: #444;
+$btn-color-rgba-opacity: 0.80;
+$btn-background-color: #E6E6E6;
+
+$primary-btn-color: #FFF;
+$primary-btn-background-color: #0078E7;
+$toggled-btn-color: #FFF;
+$toggled-btn-background-color: #0078E7;
+
+$focus-gradient: 40%;
+$focus-gradient-shade: 0.1;
+$hover-gradient-shade: 0.15;
+
+$focus-shade: 0.6;
+$hover-shade: 0.8;
+
+$active-shade: 0.4;
+$active-depth: 10px;
+$active-hover-shade: 1;
+
+$disabled-shade: 0.15;
+$disabled-opacity: 0.6;
+$disabled-opacity-IE: 100*$disabled-opacity;
+
+button {
+    &.itsa-button {
+        margin: 0;
+        padding: 0.5em 1em;
+        font: inherit; /* 2 */
+        font-family: inherit;
+        font-size: 100%;
+        color: $btn-color; /* rgba not supported (IE 8) */
+        color: rgba(0, 0, 0, $btn-color-rgba-opacity); /* rgba supported */
+        border: 1px solid #999;  /*IE 6/7/8*/
+        border: none rgba(0, 0, 0, 0);  /*IE9 + everything else*/
+        background-color: $btn-background-color;
+        text-decoration: none;
+        border-radius: 2px;
+        box-shadow: 0 0 0 1px rgba(0,0,0, 0.15) inset;
+        display: inline-block;
+        position: relative;
+        vertical-align: middle;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        overflow: visible;
+        text-transform: none;
+        -webkit-appearance: button; /* 2 */
+        line-height: normal;
+        white-space: nowrap;
+        vertical-align: baseline;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    &.itsa-button-primary {
+        background-color: $primary-btn-background-color;
+        color: $primary-btn-color;
+    }
+
+    &.itsa-button-toggled {
+        background-color: $toggled-btn-background-color;
+        color: $toggled-btn-color;
+    }
+
+    &.itsa-button:hover,
+    &.itsa-button:hover:focus {
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#1a000000',GradientType=0);
+        background-image: -webkit-gradient(linear, 0 0, 0 100%, from(transparent), color-stop($focus-gradient, rgba(0,0,0, 0.05)), to(rgba(0,0,0, $hover-gradient-shade)));
+        background-image: -webkit-linear-gradient(transparent, rgba(0,0,0, 0.05) $focus-gradient, rgba(0,0,0, $hover-gradient-shade));
+        background-image: -moz-linear-gradient(top, rgba(0,0,0, 0.05) $focus-gradient, rgba(0,0,0, $hover-gradient-shade));
+        background-image: -o-linear-gradient(transparent, rgba(0,0,0, 0.05) $focus-gradient, rgba(0,0,0, $hover-gradient-shade));
+        background-image: linear-gradient(transparent, rgba(0,0,0, 0.05) $focus-gradient, rgba(0,0,0, $hover-gradient-shade));
+        box-shadow: 0 0 0 1px rgba(0,0,0, $hover-shade) inset;
+    }
+
+    &.itsa-button:focus {
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#1a000000',GradientType=0);
+        background-image: -webkit-gradient(linear, 0 0, 0 100%, from(transparent), color-stop($focus-gradient, rgba(0,0,0, 0.05)), to(rgba(0,0,0, $focus-gradient-shade)));
+        background-image: -webkit-linear-gradient(transparent, rgba(0,0,0, 0.05) $focus-gradient, rgba(0,0,0, $focus-gradient-shade));
+        background-image: -moz-linear-gradient(top, rgba(0,0,0, 0.05) $focus-gradient, rgba(0,0,0, $focus-gradient-shade));
+        background-image: -o-linear-gradient(transparent, rgba(0,0,0, 0.05) $focus-gradient, rgba(0,0,0, $focus-gradient-shade));
+        background-image: linear-gradient(transparent, rgba(0,0,0, 0.05) $focus-gradient, rgba(0,0,0, $focus-gradient-shade));
+        box-shadow: 0 0 0 1px rgba(0,0,0, $focus-shade) inset;
+        outline: 0;
+    }
+
+    &.itsa-button-active {
+        box-shadow: 0 0 0 1px rgba(0,0,0, 0.8) inset, 0 0 $active-depth rgba(0,0,0, $active-shade) inset;
+    }
+
+    &.itsa-button:not(.itsa-button-togglebtn):active:hover,
+    &.itsa-button:not(.itsa-button-togglebtn):active:focus,
+    &.itsa-button:not(.itsa-button-togglebtn):active:hover:focus,
+    &.itsa-button-active:not(.itsa-button-togglebtn):hover,
+    &.itsa-button-active:not(.itsa-button-togglebtn):focus,
+    &.itsa-button-active:not(.itsa-button-togglebtn):hover:focus {
+        box-shadow: 0 0 0 1px rgba(0,0,0, 0.8) inset, 0 0 $active-depth rgba(0,0,0, $active-hover-shade) inset;
+    }
+
+    &.itsa-button[disabled],
+    &.itsa-button[disabled]:focus,
+    &.itsa-button[disabled]:hover,
+    &.itsa-button[disabled]:active,
+    &.itsa-button[disabled].itsa-button-active {
+        border: none;
+        background-image: none;
+        filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+        filter: alpha(opacity=$disabled-opacity-IE);
+        -khtml-opacity: $disabled-opacity;
+        -moz-opacity: $disabled-opacity;
+        opacity: $disabled-opacity;
+        cursor: not-allowed;
+        box-shadow: 0 0 0 1px rgba(0,0,0, $disabled-shade) inset;
+        cursor: default;
+    }
+
+    &.itsa-button-rounded {
+        border-radius: 0.3em;
+    }
+
+    &.itsa-button-heavyrounded {
+        border-radius: 0.5em;
+    }
+
+    &.itsa-button-oval {
+        border-radius: 50%;
+    }
+
+    &.itsa-button-halfoval {
+        border-radius: 25%;
+    }
+}
