@@ -155,6 +155,17 @@
         {
             "file": "lib/component.jsx",
             "line": 118,
+            "description": "Whether keypress should show active status. (should be set `false` for file-uploadbuttons)\nDefault: true",
+            "itemtype": "property",
+            "name": "showActivated",
+            "type": "Boolean",
+            "since": "0.0.5",
+            "class": "Button",
+            "module": "itsa-react-button"
+        },
+        {
+            "file": "lib/component.jsx",
+            "line": 128,
             "description": "The tabIndex\nDefault: 1",
             "itemtype": "property",
             "name": "tabIndex",
@@ -165,7 +176,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 128,
+            "line": 138,
             "description": "Whether the button is in a toggle-state.\nYou don;t need to use this directly: use the module ToggleButton instead.",
             "itemtype": "property",
             "name": "toggled",
@@ -176,7 +187,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 138,
+            "line": 148,
             "description": "The type of the button\nDefault: \"button\"",
             "itemtype": "property",
             "name": "children",
@@ -187,7 +198,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 149,
+            "line": 159,
             "description": "componentDidMount does some initialization.",
             "itemtype": "method",
             "name": "componentDidMount",
@@ -197,7 +208,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 161,
+            "line": 171,
             "description": "componentWilUnmount does some cleanup.",
             "itemtype": "method",
             "name": "componentWillUnmount",
@@ -207,7 +218,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 171,
+            "line": 181,
             "description": "Sets the focus on the Component.",
             "itemtype": "method",
             "name": "focus",
@@ -218,7 +229,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 183,
+            "line": 193,
             "description": "Returns the default props.",
             "itemtype": "method",
             "name": "getDefaultProps",
@@ -231,7 +242,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 201,
+            "line": 212,
             "description": "Returns the initial state.",
             "itemtype": "method",
             "name": "getInitialState",
@@ -244,7 +255,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 214,
+            "line": 225,
             "description": "Callback-fn for the onClick-event.\nWill invoke `this.props.onChange`",
             "itemtype": "method",
             "name": "handleClick",
@@ -254,7 +265,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 234,
+            "line": 245,
             "description": "Callback-fn for the onKeyDown-event.",
             "itemtype": "method",
             "name": "handleKeyDown",
@@ -264,7 +275,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 282,
+            "line": 293,
             "description": "Callback-fn for the onKeyUp-event.",
             "itemtype": "method",
             "name": "handleKeyUp",
@@ -274,7 +285,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 301,
+            "line": 312,
             "description": "Callback-fn for the onMouseDown-event.",
             "itemtype": "method",
             "name": "handleMouseDown",
@@ -284,7 +295,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 312,
+            "line": 323,
             "description": "Callback-fn for the onMouseUp-event.",
             "itemtype": "method",
             "name": "handleMouseUp",
@@ -294,7 +305,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 325,
+            "line": 336,
             "description": "Callback-fn for the onClick-event.\nWill invoke `this.props.onChange`",
             "itemtype": "method",
             "name": "press",
@@ -310,7 +321,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 337,
+            "line": 348,
             "description": "React render-method --> renderes the Component.",
             "itemtype": "method",
             "name": "render",
@@ -323,7 +334,22 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 407,
+            "line": 420,
+            "description": "Extracts the `data-*` attributes from props.",
+            "itemtype": "method",
+            "name": "_getDataAttrs",
+            "access": "private",
+            "tagname": "",
+            "return": {
+                "description": "object all the data-* attributes"
+            },
+            "since": "0.0.3",
+            "class": "Button",
+            "module": "itsa-react-button"
+        },
+        {
+            "file": "lib/component.jsx",
+            "line": 439,
             "description": "React render-method --> renderes the Component.",
             "itemtype": "method",
             "name": "_processKeyUp",
@@ -349,7 +375,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 443,
+            "line": 475,
             "description": "Returns a save string",
             "itemtype": "method",
             "name": "_saveHTML",

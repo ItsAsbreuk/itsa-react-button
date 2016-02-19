@@ -19760,7 +19760,7 @@
 
 
 	// module
-	exports.push([module.id, "button.itsa-button {\n  margin: 0;\n  padding: 0.5em 1em;\n  font: inherit;\n  /* 2 */\n  font-family: inherit;\n  font-size: 100%;\n  color: #444;\n  /* rgba not supported (IE 8) */\n  color: rgba(0, 0, 0, 0.8);\n  /* rgba supported */\n  border: 1px solid #999;\n  /*IE 6/7/8*/\n  border: none transparent;\n  /*IE9 + everything else*/\n  background-color: #E6E6E6;\n  text-decoration: none;\n  border-radius: 2px;\n  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15) inset;\n  display: inline-block;\n  position: relative;\n  vertical-align: middle;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  box-sizing: border-box;\n  -webkit-touch-callout: none;\n  -webkit-user-select: none;\n  -khtml-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  overflow: visible;\n  text-transform: none;\n  -webkit-appearance: button;\n  /* 2 */\n  line-height: normal;\n  white-space: nowrap;\n  vertical-align: baseline;\n  text-align: center;\n  cursor: pointer; }\n\nbutton.itsa-button-primary {\n  background-color: #0078E7;\n  color: #FFF; }\n\nbutton.itsa-button-toggled {\n  background-color: #0078E7;\n  color: #FFF; }\n\nbutton.itsa-button:hover, button.itsa-button:hover:focus {\n  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#1a000000',GradientType=0);\n  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(transparent), color-stop(40%, rgba(0, 0, 0, 0.05)), to(rgba(0, 0, 0, 0.15)));\n  background-image: -webkit-linear-gradient(transparent, rgba(0, 0, 0, 0.05) 40%, rgba(0, 0, 0, 0.15));\n  background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0.05) 40%, rgba(0, 0, 0, 0.15));\n  background-image: -o-linear-gradient(transparent, rgba(0, 0, 0, 0.05) 40%, rgba(0, 0, 0, 0.15));\n  background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.05) 40%, rgba(0, 0, 0, 0.15));\n  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.8) inset; }\n\nbutton.itsa-button:focus {\n  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#1a000000',GradientType=0);\n  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(transparent), color-stop(40%, rgba(0, 0, 0, 0.05)), to(rgba(0, 0, 0, 0.1)));\n  background-image: -webkit-linear-gradient(transparent, rgba(0, 0, 0, 0.05) 40%, rgba(0, 0, 0, 0.1));\n  background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0.05) 40%, rgba(0, 0, 0, 0.1));\n  background-image: -o-linear-gradient(transparent, rgba(0, 0, 0, 0.05) 40%, rgba(0, 0, 0, 0.1));\n  background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.05) 40%, rgba(0, 0, 0, 0.1));\n  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.6) inset;\n  outline: 0; }\n\nbutton.itsa-button-active {\n  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.8) inset, 0 0 10px rgba(0, 0, 0, 0.4) inset; }\n\nbutton.itsa-button:not(.itsa-button-togglebtn):active:hover, button.itsa-button:not(.itsa-button-togglebtn):active:focus, button.itsa-button:not(.itsa-button-togglebtn):active:hover:focus, button.itsa-button-active:not(.itsa-button-togglebtn):hover, button.itsa-button-active:not(.itsa-button-togglebtn):focus, button.itsa-button-active:not(.itsa-button-togglebtn):hover:focus {\n  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.8) inset, 0 0 10px black inset; }\n\nbutton.itsa-button[disabled], button.itsa-button[disabled]:focus, button.itsa-button[disabled]:hover, button.itsa-button[disabled]:active, button.itsa-button[disabled].itsa-button-active {\n  border: none;\n  background-image: none;\n  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);\n  filter: alpha(opacity=60);\n  -khtml-opacity: 0.6;\n  -moz-opacity: 0.6;\n  opacity: 0.6;\n  cursor: not-allowed;\n  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15) inset;\n  cursor: default; }\n\nbutton.itsa-button-rounded {\n  border-radius: 0.3em; }\n\nbutton.itsa-button-heavyrounded {\n  border-radius: 0.5em; }\n\nbutton.itsa-button-oval {\n  border-radius: 50%; }\n\nbutton.itsa-button-halfoval {\n  border-radius: 25%; }\n", ""]);
+	exports.push([module.id, "button.itsa-button {\n  margin: 0;\n  padding: 0.5em 1em;\n  font: inherit;\n  /* 2 */\n  font-family: inherit;\n  font-size: 100%;\n  color: #444;\n  /* rgba not supported (IE 8) */\n  color: rgba(0, 0, 0, 0.8);\n  /* rgba supported */\n  border: 1px solid #999;\n  /*IE 6/7/8*/\n  border: none transparent;\n  /*IE9 + everything else*/\n  background-color: #E6E6E6;\n  text-decoration: none;\n  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15) inset;\n  display: inline-block;\n  position: relative;\n  vertical-align: middle;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  box-sizing: border-box;\n  -webkit-touch-callout: none;\n  -webkit-user-select: none;\n  -khtml-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  overflow: visible;\n  text-transform: none;\n  -webkit-appearance: button;\n  /* 2 */\n  line-height: normal;\n  white-space: nowrap;\n  vertical-align: baseline;\n  text-align: center;\n  cursor: pointer; }\n\nbutton.itsa-button-primary {\n  background-color: #0078E7;\n  color: #FFF; }\n\nbutton.itsa-button-toggled {\n  background-color: #0078E7;\n  color: #FFF; }\n\nbutton.itsa-button:hover, button.itsa-button:hover:focus {\n  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#1a000000',GradientType=0);\n  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(transparent), color-stop(40%, rgba(0, 0, 0, 0.05)), to(rgba(0, 0, 0, 0.15)));\n  background-image: -webkit-linear-gradient(transparent, rgba(0, 0, 0, 0.05) 40%, rgba(0, 0, 0, 0.15));\n  background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0.05) 40%, rgba(0, 0, 0, 0.15));\n  background-image: -o-linear-gradient(transparent, rgba(0, 0, 0, 0.05) 40%, rgba(0, 0, 0, 0.15));\n  background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.05) 40%, rgba(0, 0, 0, 0.15));\n  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.8) inset; }\n\nbutton.itsa-button:focus {\n  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#1a000000',GradientType=0);\n  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(transparent), color-stop(40%, rgba(0, 0, 0, 0.05)), to(rgba(0, 0, 0, 0.1)));\n  background-image: -webkit-linear-gradient(transparent, rgba(0, 0, 0, 0.05) 40%, rgba(0, 0, 0, 0.1));\n  background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0.05) 40%, rgba(0, 0, 0, 0.1));\n  background-image: -o-linear-gradient(transparent, rgba(0, 0, 0, 0.05) 40%, rgba(0, 0, 0, 0.1));\n  background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.05) 40%, rgba(0, 0, 0, 0.1));\n  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.6) inset;\n  outline: 0; }\n\nbutton.itsa-button::-moz-focus-inner {\n  /* firefox focusring */\n  border: 0; }\n\nbutton.itsa-button-active {\n  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.8) inset, 0 0 10px rgba(0, 0, 0, 0.4) inset; }\n\nbutton.itsa-button:not(.itsa-button-togglebtn):active:hover, button.itsa-button:not(.itsa-button-togglebtn):active:focus, button.itsa-button:not(.itsa-button-togglebtn):active:hover:focus, button.itsa-button-active:not(.itsa-button-togglebtn):hover, button.itsa-button-active:not(.itsa-button-togglebtn):focus, button.itsa-button-active:not(.itsa-button-togglebtn):hover:focus {\n  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.8) inset, 0 0 10px black inset; }\n\nbutton.itsa-button[disabled], button.itsa-button[disabled]:focus, button.itsa-button[disabled]:hover, button.itsa-button[disabled]:active, button.itsa-button[disabled].itsa-button-active, button.itsa-button[disabled]:active:hover, button.itsa-button[disabled].itsa-button-active:hover, button.itsa-button[disabled]:active:focus, button.itsa-button[disabled].itsa-button-active:focus, button.itsa-button[disabled]:active:focus:hover, button.itsa-button[disabled].itsa-button-active:focus:hover {\n  border: none;\n  background-image: none;\n  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);\n  filter: alpha(opacity=60);\n  -khtml-opacity: 0.6;\n  -moz-opacity: 0.6;\n  opacity: 0.6;\n  cursor: not-allowed;\n  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15) inset;\n  cursor: default; }\n\nbutton.itsa-button-smoothrounded {\n  border-radius: 2px; }\n\nbutton.itsa-button-rounded {\n  border-radius: 0.3em; }\n\nbutton.itsa-button-heavyrounded {\n  border-radius: 0.5em; }\n\nbutton.itsa-button-oval {\n  border-radius: 50%; }\n\nbutton.itsa-button-halfoval {\n  border-radius: 25%; }\n", ""]);
 
 	// exports
 
@@ -20094,6 +20094,8 @@
 	 * @since 0.0.1
 	*/
 
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
 	var _react = __webpack_require__(1);
@@ -20209,6 +20211,16 @@
 	        onClick: _react.PropTypes.func,
 
 	        /**
+	         * Whether keypress should show active status. (should be set `false` for file-uploadbuttons)
+	         * Default: true
+	         *
+	         * @property showActivated
+	         * @type Boolean
+	         * @since 0.0.5
+	        */
+	        showActivated: _react.PropTypes.bool,
+
+	        /**
 	         * The tabIndex
 	         * Default: 1
 	         *
@@ -20289,6 +20301,7 @@
 	            buttonPressTime: DEF_BUTTON_PRESS_TIME,
 	            directResponse: true,
 	            disabled: false,
+	            showActivated: true,
 	            tabIndex: 1,
 	            type: 'button'
 	        };
@@ -20454,6 +20467,7 @@
 	    render: function render() {
 	        var classname = MAIN_CLASS,
 	            buttonHTML = this.props.buttonHTML,
+	            dataAttrs = {},
 	            dangerouslySetInnerHTML = undefined,
 	            buttonText = undefined,
 	            handleClick = undefined,
@@ -20472,7 +20486,7 @@
 	            ariaLabel = props["aria-label"] || saveButtonText || instance._saveHTML(buttonHTML);
 
 	        if (state.active || props.toggled) {
-	            classname += " " + MAIN_CLASS_PREFIX + "active";
+	            props.showActivated && (classname += " " + MAIN_CLASS_PREFIX + "active");
 	            props.toggled && (classname += " " + MAIN_CLASS_PREFIX + "toggled");
 	        }
 	        isToggleButton && (classname += " " + MAIN_CLASS_PREFIX + "togglebtn");
@@ -20499,7 +20513,8 @@
 
 	        return _react2.default.createElement(
 	            "button",
-	            { accessKey: props.accessKey,
+	            _extends({}, instance._getDataAttrs(), {
+	                accessKey: props.accessKey,
 	                "aria-label": ariaLabel,
 	                "aria-pressed": props.toggled,
 	                className: classname,
@@ -20513,9 +20528,29 @@
 	                onMouseUp: handleMouseUp,
 	                role: "button",
 	                tabIndex: props.tabIndex,
-	                type: props.type },
+	                type: props.type }),
 	            buttonText
 	        );
+	    },
+
+
+	    /**
+	     * Extracts the `data-*` attributes from props.
+	     *
+	     * @method _getDataAttrs
+	     * @private
+	     * @return object all the data-* attributes
+	     * @since 0.0.3
+	     */
+	    _getDataAttrs: function _getDataAttrs() {
+	        var dataAttrs = {};
+	        var props = this.props,
+	            keys = Object.keys(props);
+
+	        keys.forEach(function (key) {
+	            key.substr(0, 5).toLowerCase() === "data-" && (dataAttrs[key] = props[key]);
+	        });
+	        return dataAttrs;
 	    },
 
 

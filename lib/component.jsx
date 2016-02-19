@@ -116,6 +116,16 @@ const Button = React.createClass({
         onClick: PropTypes.func,
 
         /**
+         * Whether keypress should show active status. (should be set `false` for file-uploadbuttons)
+         * Default: true
+         *
+         * @property showActivated
+         * @type Boolean
+         * @since 0.0.5
+        */
+        showActivated: PropTypes.bool,
+
+        /**
          * The tabIndex
          * Default: 1
          *
@@ -193,6 +203,7 @@ const Button = React.createClass({
             buttonPressTime: DEF_BUTTON_PRESS_TIME,
             directResponse: true,
             disabled: false,
+            showActivated: true,
             tabIndex: 1,
             type: 'button'
         };
@@ -344,6 +355,7 @@ const Button = React.createClass({
     render() {
         let classname = MAIN_CLASS,
             buttonHTML = this.props.buttonHTML,
+            dataAttrs = {},
             dangerouslySetInnerHTML, buttonText, handleClick,
             handleKeyDown, handleKeyUp, handleMouseDown, handleMouseUp;
 
@@ -357,7 +369,7 @@ const Button = React.createClass({
               ariaLabel = props["aria-label"] || saveButtonText || instance._saveHTML(buttonHTML);
 
         if (state.active || props.toggled) {
-            classname += " "+MAIN_CLASS_PREFIX+"active";
+            props.showActivated && (classname+=" "+MAIN_CLASS_PREFIX+"active");
             props.toggled && (classname+=" "+MAIN_CLASS_PREFIX+"toggled");
         }
         isToggleButton && (classname+=" "+MAIN_CLASS_PREFIX+"togglebtn");
@@ -384,7 +396,8 @@ const Button = React.createClass({
         }
 
         return (
-            <button accessKey={props.accessKey}
+            <button {...instance._getDataAttrs()}
+                accessKey={props.accessKey}
                 aria-label={ariaLabel}
                 aria-pressed={props.toggled}
                 className={classname}
@@ -402,6 +415,25 @@ const Button = React.createClass({
                 {buttonText}
             </button>
         );
+    },
+
+    /**
+     * Extracts the `data-*` attributes from props.
+     *
+     * @method _getDataAttrs
+     * @private
+     * @return object all the data-* attributes
+     * @since 0.0.3
+     */
+    _getDataAttrs() {
+        let dataAttrs = {};
+        const props = this.props,
+             keys = Object.keys(props);
+
+        keys.forEach(function(key) {
+            (key.substr(0,5).toLowerCase()==="data-") && (dataAttrs[key]=props[key]);
+        });
+        return dataAttrs;
     },
 
     /**

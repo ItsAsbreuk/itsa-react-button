@@ -35,7 +35,6 @@ button {
         border: none rgba(0, 0, 0, 0);  /*IE9 + everything else*/
         background-color: $btn-background-color;
         text-decoration: none;
-        border-radius: 2px;
         box-shadow: 0 0 0 1px rgba(0,0,0, 0.15) inset;
         display: inline-block;
         position: relative;
@@ -91,6 +90,10 @@ button {
         outline: 0;
     }
 
+    &.itsa-button::-moz-focus-inner { /* firefox focusring */
+        border: 0;
+    }
+
     &.itsa-button-active {
         box-shadow: 0 0 0 1px rgba(0,0,0, 0.8) inset, 0 0 $active-depth rgba(0,0,0, $active-shade) inset;
     }
@@ -108,7 +111,13 @@ button {
     &.itsa-button[disabled]:focus,
     &.itsa-button[disabled]:hover,
     &.itsa-button[disabled]:active,
-    &.itsa-button[disabled].itsa-button-active {
+    &.itsa-button[disabled].itsa-button-active,
+    &.itsa-button[disabled]:active:hover,
+    &.itsa-button[disabled].itsa-button-active:hover,
+    &.itsa-button[disabled]:active:focus,
+    &.itsa-button[disabled].itsa-button-active:focus,
+    &.itsa-button[disabled]:active:focus:hover,
+    &.itsa-button[disabled].itsa-button-active:focus:hover {
         border: none;
         background-image: none;
         filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
@@ -119,6 +128,10 @@ button {
         cursor: not-allowed;
         box-shadow: 0 0 0 1px rgba(0,0,0, $disabled-shade) inset;
         cursor: default;
+    }
+
+    &.itsa-button-smoothrounded {
+        border-radius: 2px;
     }
 
     &.itsa-button-rounded {
