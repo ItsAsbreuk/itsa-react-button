@@ -69,7 +69,9 @@ button {
     }
 
     &.itsa-button:hover,
-    &.itsa-button:hover:focus {
+    &.itsa-button.itsa-button-hover,
+    &.itsa-button:hover:focus,
+    &.itsa-button.itsa-button-hover:focus {
         filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#1a000000',GradientType=0);
         background-image: -webkit-gradient(linear, 0 0, 0 100%, from(transparent), color-stop($focus-gradient, rgba(0,0,0, 0.05)), to(rgba(0,0,0, $hover-gradient-shade)));
         background-image: -webkit-linear-gradient(transparent, rgba(0,0,0, 0.05) $focus-gradient, rgba(0,0,0, $hover-gradient-shade));
@@ -99,25 +101,34 @@ button {
     }
 
     &.itsa-button:not(.itsa-button-togglebtn):active:hover,
+    &.itsa-button:not(.itsa-button-togglebtn).itsa-button-hover:active,
     &.itsa-button:not(.itsa-button-togglebtn):active:focus,
     &.itsa-button:not(.itsa-button-togglebtn):active:hover:focus,
+    &.itsa-button:not(.itsa-button-togglebtn).itsa-button-hover:active:focus,
     &.itsa-button-active:not(.itsa-button-togglebtn):hover,
+    &.itsa-button-active:not(.itsa-button-togglebtn).itsa-button-hover,
     &.itsa-button-active:not(.itsa-button-togglebtn):focus,
-    &.itsa-button-active:not(.itsa-button-togglebtn):hover:focus {
+    &.itsa-button-active:not(.itsa-button-togglebtn):hover:focus,
+    &.itsa-button-active:not(.itsa-button-togglebtn).itsa-button-hover:focus {
         box-shadow: 0 0 0 1px rgba(0,0,0, 0.8) inset, 0 0 $active-depth rgba(0,0,0, $active-hover-shade) inset;
     }
 
     &.itsa-button[disabled],
     &.itsa-button[disabled]:focus,
     &.itsa-button[disabled]:hover,
+    &.itsa-button[disabled].itsa-button-hover,
     &.itsa-button[disabled]:active,
     &.itsa-button[disabled].itsa-button-active,
     &.itsa-button[disabled]:active:hover,
+    &.itsa-button[disabled].itsa-button-hover:active,
     &.itsa-button[disabled].itsa-button-active:hover,
+    &.itsa-button[disabled].itsa-button-active.itsa-button-hover,
     &.itsa-button[disabled]:active:focus,
     &.itsa-button[disabled].itsa-button-active:focus,
     &.itsa-button[disabled]:active:focus:hover,
-    &.itsa-button[disabled].itsa-button-active:focus:hover {
+    &.itsa-button[disabled].itsa-button-hover:active:focus,
+    &.itsa-button[disabled].itsa-button-active:focus:hover,
+    &.itsa-button[disabled].itsa-button-hover.itsa-button-active:focus {
         border: none;
         background-image: none;
         filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
