@@ -365,7 +365,7 @@ const Button = React.createClass({
                         pressTimer &amp;&amp; pressTimer.cancel();
                         instance.pressTimer = later(instance._processKeyUp.bind(instance, null, isDirectResponse, forced), props.buttonPressTime);
                         if (isDirectResponse) {
-                            onClick &amp;&amp; onClick();
+                            onClick &amp;&amp; later(onClick, 100); // we MUST delay, because an &#x60;onClick&#x60; that rerenders, would prevent &#x60;onKeyUp&#x60; from happening!
                         }
                     }
                 }

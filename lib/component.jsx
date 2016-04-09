@@ -16,7 +16,7 @@
 
 import React, {PropTypes} from "react";
 import ReactDom from "react-dom";
-import {later, async} from "utils";
+import {later, async} from "itsa-utils";
 
 const MAIN_CLASS = "itsa-button",
       MAIN_CLASS_PREFIX = MAIN_CLASS+"-",
@@ -237,7 +237,7 @@ const Button = React.createClass({
             instance.focus();
             if (onClick) {
                 e.preventDefault();
-                onClick();
+                onClick(e.nativeEvent.which || 1);
             }
         }
     },
@@ -272,7 +272,7 @@ const Button = React.createClass({
             if (forced || (activatedBy.indexOf(keyCode)!==-1)) {
                 instance._keyDown = true;
                 if (typeof props.toggled===BOOLEAN) {
-                    onClick && onClick();
+                    onClick && onClick(1);
                 }
                 else {
                     if (!instance.state.active) {
@@ -282,7 +282,9 @@ const Button = React.createClass({
                         pressTimer && pressTimer.cancel();
                         instance.pressTimer = later(instance._processKeyUp.bind(instance, null, isDirectResponse, forced), props.buttonPressTime);
                         if (isDirectResponse) {
-                            onClick && onClick();
+                            onClick && later(() => {
+                                onClick(1);
+                            }, 100); // we MUST delay, because an `onClick` that rerenders, would prevent `onKeyUp` from happening!
                         }
                     }
                 }
@@ -465,7 +467,7 @@ const Button = React.createClass({
                         active: false
                     });
                     if ((typeof directResponse===BOOLEAN) ? !directResponse : !props.directResponse) {
-                        onClick && onClick();
+                        onClick && onClick(1);
                     }
                 }
             }

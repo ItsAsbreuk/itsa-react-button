@@ -48,7 +48,8 @@ button {
         -moz-user-select: none;
         -ms-user-select: none;
         user-select: none;
-        overflow: visible;
+        overflow: hidden;
+        text-overflow: ellipsis;
         text-transform: none;
         -webkit-appearance: button; /* 2 */
         line-height: normal;

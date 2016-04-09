@@ -4,9 +4,12 @@ const React = require("react"),
     ReactDOM = require("react-dom"),
     Button = require("./lib/component-styled.jsx");
 
+var i = 0;
+
 const handleCLick = () => {
+    var t = "Button was pressed "+(++i);
     ReactDOM.render(
-        <div>Button was pressed</div>,
+        <div>{t}</div>,
         document.getElementById("text-container")
     );
 };
