@@ -99,7 +99,7 @@
 
 import React, {PropTypes} from &quot;react&quot;;
 import ReactDom from &quot;react-dom&quot;;
-import {later, async} from &quot;utils&quot;;
+import {later, async} from &quot;itsa-utils&quot;;
 
 const MAIN_CLASS = &quot;itsa-button&quot;,
       MAIN_CLASS_PREFIX = MAIN_CLASS+&quot;-&quot;,
@@ -320,7 +320,7 @@ const Button = React.createClass({
             instance.focus();
             if (onClick) {
                 e.preventDefault();
-                onClick();
+                onClick(e.nativeEvent.which || 1);
             }
         }
     },
@@ -355,7 +355,7 @@ const Button = React.createClass({
             if (forced || (activatedBy.indexOf(keyCode)!==-1)) {
                 instance._keyDown = true;
                 if (typeof props.toggled===BOOLEAN) {
-                    onClick &amp;&amp; onClick();
+                    onClick &amp;&amp; onClick(1);
                 }
                 else {
                     if (!instance.state.active) {
@@ -365,7 +365,9 @@ const Button = React.createClass({
                         pressTimer &amp;&amp; pressTimer.cancel();
                         instance.pressTimer = later(instance._processKeyUp.bind(instance, null, isDirectResponse, forced), props.buttonPressTime);
                         if (isDirectResponse) {
-                            onClick &amp;&amp; later(onClick, 100); // we MUST delay, because an &#x60;onClick&#x60; that rerenders, would prevent &#x60;onKeyUp&#x60; from happening!
+                            onClick &amp;&amp; later(() =&gt; {
+                                onClick(1);
+                            }, 100); // we MUST delay, because an &#x60;onClick&#x60; that rerenders, would prevent &#x60;onKeyUp&#x60; from happening!
                         }
                     }
                 }
@@ -548,7 +550,7 @@ const Button = React.createClass({
                         active: false
                     });
                     if ((typeof directResponse===BOOLEAN) ? !directResponse : !props.directResponse) {
-                        onClick &amp;&amp; onClick();
+                        onClick &amp;&amp; onClick(1);
                     }
                 }
             }

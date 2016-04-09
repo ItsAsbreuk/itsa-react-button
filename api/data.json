@@ -275,7 +275,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 293,
+            "line": 295,
             "description": "Callback-fn for the onKeyUp-event.",
             "itemtype": "method",
             "name": "handleKeyUp",
@@ -285,7 +285,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 312,
+            "line": 314,
             "description": "Callback-fn for the onMouseDown-event.",
             "itemtype": "method",
             "name": "handleMouseDown",
@@ -295,7 +295,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 323,
+            "line": 325,
             "description": "Callback-fn for the onMouseUp-event.",
             "itemtype": "method",
             "name": "handleMouseUp",
@@ -305,7 +305,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 336,
+            "line": 338,
             "description": "Callback-fn for the onClick-event.\nWill invoke `this.props.onChange`",
             "itemtype": "method",
             "name": "press",
@@ -321,7 +321,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 348,
+            "line": 350,
             "description": "React render-method --> renderes the Component.",
             "itemtype": "method",
             "name": "render",
@@ -334,7 +334,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 420,
+            "line": 422,
             "description": "Extracts the `data-*` attributes from props.",
             "itemtype": "method",
             "name": "_getDataAttrs",
@@ -349,7 +349,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 439,
+            "line": 441,
             "description": "React render-method --> renderes the Component.",
             "itemtype": "method",
             "name": "_processKeyUp",
@@ -375,7 +375,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 475,
+            "line": 477,
             "description": "Returns a save string",
             "itemtype": "method",
             "name": "_saveHTML",

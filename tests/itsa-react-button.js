@@ -243,7 +243,7 @@ describe("Button tests", function () {
             expect(clicked).to.be.false;
         });
 
-        it("onKeyDown-event enter-key", function () {
+        it("onKeyDown-event enter-key", function (done) {
             let clicked = false;
             const handleClick = () => {
                 clicked = true;
@@ -253,7 +253,10 @@ describe("Button tests", function () {
             expect(clicked).to.be.false;
             TestUtils.Simulate.keyDown(buttonNode, {keyCode : 13});
             TestUtils.Simulate.keyUp(buttonNode);
-            expect(clicked).to.be.true;
+            setTimeout(function() {
+              expect(clicked).to.be.true;
+              done();
+            }, 150);
         });
 
         it("onKeyDown-event enter-key without directResponse", function (done) {

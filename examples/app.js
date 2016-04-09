@@ -20109,7 +20109,7 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _utils = __webpack_require__(165);
+	var _itsaUtils = __webpack_require__(165);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -20341,7 +20341,7 @@
 	            instance.focus();
 	            if (onClick) {
 	                e.preventDefault();
-	                onClick();
+	                onClick(e.nativeEvent.which || 1);
 	            }
 	        }
 	    },
@@ -20377,16 +20377,18 @@
 	            if (forced || activatedBy.indexOf(keyCode) !== -1) {
 	                instance._keyDown = true;
 	                if (_typeof(props.toggled) === BOOLEAN) {
-	                    onClick && onClick();
+	                    onClick && onClick(1);
 	                } else {
 	                    if (!instance.state.active) {
 	                        instance.setState({
 	                            active: true
 	                        });
 	                        pressTimer && pressTimer.cancel();
-	                        instance.pressTimer = (0, _utils.later)(instance._processKeyUp.bind(instance, null, isDirectResponse, forced), props.buttonPressTime);
+	                        instance.pressTimer = (0, _itsaUtils.later)(instance._processKeyUp.bind(instance, null, isDirectResponse, forced), props.buttonPressTime);
 	                        if (isDirectResponse) {
-	                            onClick && (0, _utils.later)(onClick, 100); // we MUST delay, because an `onClick` that rerenders, would prevent `onKeyUp` from happening!
+	                            onClick && (0, _itsaUtils.later)(function () {
+	                                onClick(1);
+	                            }, 100); // we MUST delay, because an `onClick` that rerenders, would prevent `onKeyUp` from happening!
 	                        }
 	                    }
 	                }
@@ -20407,7 +20409,7 @@
 	        // we must go async --> instance._keyDown cannot be set 'false' right away,
 	        // because the handleClick method needs to be processed first
 	        // if we don;t do this, props.onClick() would be executed twice when the spacebutton is pressed
-	        (0, _utils.async)(function () {
+	        (0, _itsaUtils.async)(function () {
 	            var instance = _this;
 	            instance._keyDown = false;
 	            if (_typeof(instance.props.toggled) !== BOOLEAN && instance.state.active) {
@@ -20441,7 +20443,7 @@
 	        // we must go async --> instance._mouseDown cannot be set 'false' right away,
 	        // because the handleClick method needs to be processed first
 	        // if we don;t do this, props.onClick() would be executed twice when the spacebutton is pressed
-	        (0, _utils.async)(function () {
+	        (0, _itsaUtils.async)(function () {
 	            return _this2._mouseDown = false;
 	        });
 	    },
@@ -20587,7 +20589,7 @@
 	                        active: false
 	                    });
 	                    if ((typeof directResponse === "undefined" ? "undefined" : _typeof(directResponse)) === BOOLEAN ? !directResponse : !props.directResponse) {
-	                        onClick && onClick();
+	                        onClick && onClick(1);
 	                    }
 	                }
 	            }
@@ -20615,23 +20617,21 @@
 /* 165 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	module.exports = {
 	   idGenerator: __webpack_require__(166).idGenerator,
-	   later: __webpack_require__(170).later,
-	   async: __webpack_require__(170).async
+	   later: __webpack_require__(167).later,
+	   async: __webpack_require__(167).async
 	};
 
 /***/ },
 /* 166 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
 	"use strict";
 
-	__webpack_require__(167);
-
-	var UNDEFINED_NS = '__undefined__',
+	var UNDEFINED_NS = "__undefined__",
 	    namespaces = {};
 
 	/**
@@ -20651,26 +20651,26 @@
 	 *
 	 * @example
 	 *
-	 *     var generator = require('core-utils-idgenerator');
+	 *     var generator = require("core-utils-idgenerator");
 	 *
 	 *     console.log(generator()); // --> 1
 	 *     console.log(generator()); // --> 2
 	 *     console.log(generator(1000)); // --> 1000
 	 *     console.log(generator()); // --> 1001
-	 *     console.log(generator('Parcel, 500')); // -->"Parcel-500"
-	 *     console.log(generator('Parcel')); // -->"Parcel-501"
+	 *     console.log(generator("Parcel, 500")); // -->"Parcel-500"
+	 *     console.log(generator("Parcel")); // -->"Parcel-501"
 	 *
 	 *
 	 * @method idGenerator
 	 * @param [namespace] {String} namespace to prepend the generated id.
 	 *        When ignored, the generator just returns a number.
-	 * @param [start] {Number} startvalue for the next generated id. Any further generated id's will preceed this id.
+	 * @param [start] {Number} startvalue for the next generated id. Any further generated id"s will preceed this id.
 	 *        If `start` is lower or equal than the last generated id, it will be ignored.
 	 * @return {Number|String} an unique id. Either a number, or a String (digit prepended with "namespace-")
 	 */
 	module.exports.idGenerator = function (namespace, start) {
 	  // in case `start` is set at first argument, transform into (null, start)
-	  typeof namespace === 'number' && (start = namespace) && (namespace = null);
+	  typeof namespace === "number" && (start = namespace) && (namespace = null);
 	  namespace || (namespace = UNDEFINED_NS);
 
 	  if (!namespaces[namespace]) {
@@ -20678,66 +20678,11 @@
 	  } else if (start && namespaces[namespace] < start) {
 	    namespaces[namespace] = start;
 	  }
-	  return namespace === UNDEFINED_NS ? namespaces[namespace]++ : namespace + '-' + namespaces[namespace]++;
+	  return namespace === UNDEFINED_NS ? namespaces[namespace]++ : namespace + "-" + namespaces[namespace]++;
 	};
 
 /***/ },
 /* 167 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	__webpack_require__(168);
-	__webpack_require__(169);
-
-/***/ },
-/* 168 */
-/***/ function(module, exports) {
-
-	/* WEBPACK VAR INJECTION */(function(global) {"use strict";
-
-	(function (global) {
-	    "use strict";
-
-	    var CONSOLE = {
-	        log: function log() {/* NOOP */},
-	        info: function info() {/* NOOP */},
-	        warn: function warn() {/* NOOP */},
-	        error: function error() {/* NOOP */}
-	    };
-
-	    global.console || function (GlobalPrototype) {
-	        GlobalPrototype.console = CONSOLE;
-	    }(global.prototype);
-
-	    module.exports = CONSOLE;
-	})(typeof global !== 'undefined' ? global : /* istanbul ignore next */undefined);
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
-
-/***/ },
-/* 169 */
-/***/ function(module, exports) {
-
-	/* WEBPACK VAR INJECTION */(function(global) {"use strict";
-
-	// based upon https://gist.github.com/jonathantneal/3062955
-	(function (global) {
-	    "use strict";
-
-	    global.Element && function (ElementPrototype) {
-	        ElementPrototype.matchesSelector || (ElementPrototype.matchesSelector = ElementPrototype.mozMatchesSelector || ElementPrototype.msMatchesSelector || ElementPrototype.oMatchesSelector || ElementPrototype.webkitMatchesSelector || function (selector) {
-	            var node = this,
-	                nodes = (node.parentNode || global.document).querySelectorAll(selector),
-	                i = -1;
-	            while (nodes[++i] && nodes[i] !== node) {}
-	            return !!nodes[i];
-	        });
-	    }(global.Element.prototype);
-	})(typeof global !== 'undefined' ? global : /* istanbul ignore next */undefined);
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
-
-/***/ },
-/* 170 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(setImmediate, process) {/**
@@ -20754,11 +20699,7 @@
 
 	"use strict";
 
-	__webpack_require__(167);
-
-	var NAME = '[utils-timers]: ',
-	    _asynchronizer,
-	    _async;
+	var _asynchronizer, _async;
 
 	/**
 	 * Forces a function to be run asynchronously, but as fast as possible. In Node.js
@@ -20769,9 +20710,9 @@
 	 * @static
 	 * @private
 	**/
-	_asynchronizer = typeof setImmediate !== 'undefined' ? function (fn) {
+	_asynchronizer = typeof setImmediate !== "undefined" ? function (fn) {
 	  setImmediate(fn);
-	} : typeof process !== 'undefined' && process.nextTick ? process.nextTick : function (fn) {
+	} : typeof process !== "undefined" && process.nextTick ? process.nextTick : function (fn) {
 	  setTimeout(fn, 0);
 	};
 
@@ -20780,20 +20721,19 @@
 	 * requires a specific execution context or arguments, wrap it with Function.bind.
 	 *
 	 * I.async returns an object with a cancel method.  If the cancel method is
-	 * called before the callback function, the callback function won't be called.
+	 * called before the callback function, the callback function won"t be called.
 	 *
 	 * @method async
 	 * @param {Function} callbackFn
 	 * @param [invokeAfterFn=true] {boolean} set to false to prevent the _afterSyncFn to be invoked
 	 * @return {Object} An object with a cancel method.  If the cancel method is
-	 * called before the callback function, the callback function won't be called.
+	 * called before the callback function, the callback function won"t be called.
 	**/
 	_async = function _async(callbackFn, invokeAfterFn) {
-	  console.log(NAME, 'async');
 	  var canceled;
 
-	  invokeAfterFn = typeof invokeAfterFn === 'boolean' ? invokeAfterFn : true;
-	  typeof callbackFn === 'function' && _asynchronizer(function () {
+	  invokeAfterFn = typeof invokeAfterFn === "boolean" ? invokeAfterFn : true;
+	  typeof callbackFn === "function" && _asynchronizer(function () {
 	    if (!canceled) {
 	      callbackFn();
 	    }
@@ -20811,13 +20751,13 @@
 	 * requires a specific execution context or arguments, wrap it with Function.bind.
 	 *
 	 * I.async returns an object with a cancel method.  If the cancel method is
-	 * called before the callback function, the callback function won't be called.
+	 * called before the callback function, the callback function won"t be called.
 	 *
 	 * @method async
 	 * @param {Function} callbackFn
 	 * @param [invokeAfterFn=true] {boolean} set to false to prevent the _afterSyncFn to be invoked
 	 * @return {Object} An object with a cancel method.  If the cancel method is
-	 * called before the callback function, the callback function won't be called.
+	 * called before the callback function, the callback function won"t be called.
 	**/
 	module.exports.async = _async;
 
@@ -20825,26 +20765,25 @@
 	 * Invokes the callbackFn after a timeout (asynchronous). If the function
 	 * requires a specific execution context or arguments, wrap it with Function.bind.
 	 *
-	 * To invoke the callback function periodic, set 'periodic' either 'true', or specify a second timeout.
-	 * If number, then periodic is considered 'true' but with a perdiod defined by 'periodic',
-	 * which means: the first timer executes after 'timeout' and next timers after 'period'.
+	 * To invoke the callback function periodic, set "periodic" either "true", or specify a second timeout.
+	 * If number, then periodic is considered "true" but with a perdiod defined by "periodic",
+	 * which means: the first timer executes after "timeout" and next timers after "period".
 	 *
 	 * I.later returns an object with a cancel method.  If the cancel() method is
-	 * called before the callback function, the callback function won't be called.
+	 * called before the callback function, the callback function won"t be called.
 	 *
 	 * @method later
 	 * @param callbackFn {Function} the function to execute.
 	 * @param [timeout] {Number} the number of milliseconds to wait until the callbackFn is executed.
 	 * when not set, the callback function is invoked once in the next turn of the JavaScript event loop.
-	 * @param [periodic] {boolean|Number} if true, executes continuously at supplied, if number, then periodic is considered 'true' but with a perdiod
-	 * defined by 'periodic', which means: the first timer executes after 'timeout' and next timers after 'period'.
+	 * @param [periodic] {boolean|Number} if true, executes continuously at supplied, if number, then periodic is considered "true" but with a perdiod
+	 * defined by "periodic", which means: the first timer executes after "timeout" and next timers after "period".
 	 * The interval executes until canceled.
 	 * @return {object} a timer object. Call the cancel() method on this object to stop the timer.
 	*/
 	module.exports.later = function (callbackFn, timeout, periodic) {
-	  console.log(NAME, 'later --> timeout: ' + timeout + 'ms | periodic: ' + periodic);
 	  var canceled = false;
-	  if (typeof timeout !== 'number') {
+	  if (typeof timeout !== "number") {
 	    return _async(callbackFn);
 	  }
 	  var wrapper = function wrapper() {
@@ -20855,11 +20794,11 @@
 	      // we are NOT using setInterval, because that leads to problems when the callback
 	      // lasts longer than the interval. Instead, we use the interval as inbetween-phase
 	      // between the separate callbacks.
-	      id = periodic ? setTimeout(wrapper, typeof periodic === 'number' ? periodic : timeout) : null;
+	      id = periodic ? setTimeout(wrapper, typeof periodic === "number" ? periodic : timeout) : null;
 	    }
 	  },
 	      id;
-	  typeof callbackFn === 'function' && (id = setTimeout(wrapper, timeout));
+	  typeof callbackFn === "function" && (id = setTimeout(wrapper, timeout));
 
 	  return {
 	    cancel: function cancel() {
@@ -20870,10 +20809,10 @@
 	    }
 	  };
 	};
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(171).setImmediate, __webpack_require__(4)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(168).setImmediate, __webpack_require__(4)))
 
 /***/ },
-/* 171 */
+/* 168 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(setImmediate, clearImmediate) {"use strict";
@@ -20954,7 +20893,7 @@
 	exports.clearImmediate = typeof clearImmediate === "function" ? clearImmediate : function (id) {
 	  delete immediateIds[id];
 	};
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(171).setImmediate, __webpack_require__(171).clearImmediate))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(168).setImmediate, __webpack_require__(168).clearImmediate))
 
 /***/ }
 /******/ ]);
