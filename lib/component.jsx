@@ -251,8 +251,9 @@ const Button = React.createClass({
      * @since 0.0.1
      */
     focus(transitionTime) {
-        this._buttonNode.itsa_focus(null, null, transitionTime);
-        return this;
+        var instance = this;
+        instance._buttonNode.itsa_focus && instance._buttonNode.itsa_focus(null, null, transitionTime);
+        return instance;
     },
 
     /**
