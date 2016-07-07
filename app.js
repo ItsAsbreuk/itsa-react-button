@@ -15,7 +15,7 @@ const handleCLick = () => {
 };
 
 const btn = ReactDOM.render(
-    <Button buttonText="Press me" onClick={handleCLick} />,
+    <Button buttonHTML="Pr<b>ess</b> me" onClick={handleCLick} />,
     document.getElementById("component-container")
 );
 

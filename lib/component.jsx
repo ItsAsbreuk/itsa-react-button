@@ -14,15 +14,18 @@
  * @since 0.0.1
 */
 
-import React, {PropTypes} from "react";
-import ReactDom from "react-dom";
-import {later, async} from "itsa-utils";
-
-const MAIN_CLASS = "itsa-button",
-      MAIN_CLASS_PREFIX = MAIN_CLASS+"-",
-      WHITE_SPACE = "&#160;", // white-space
-      BOOLEAN = "boolean",
-      DEF_BUTTON_PRESS_TIME = 300;
+const React = require("react"),
+    PropTypes = React.PropTypes,
+    ReactDom = require("react-dom"),
+    utils = require("itsa-utils"),
+    later = utils.later,
+    async = utils.async,
+    MAIN_CLASS = "itsa-button",
+    FORM_ELEMENT_CLASS_SPACES = " itsa-formelement",
+    MAIN_CLASS_PREFIX = MAIN_CLASS+"-",
+    WHITE_SPACE = "&#160;", // white-space
+    BOOLEAN = "boolean",
+    DEF_BUTTON_PRESS_TIME = 300;
 
 const Button = React.createClass({
 
@@ -45,6 +48,15 @@ const Button = React.createClass({
          * @since 0.0.1
         */
         "aria-label": PropTypes.string,
+
+        /**
+         * Whether to autofocus the Component.
+         *
+         * @property autoFocus
+         * @type Boolean
+         * @since 0.0.1
+        */
+        autoFocus: PropTypes.bool,
 
         /**
          * The Button-text. Will be escaped. If you need HTML, then use `buttonHTML` instead.
@@ -77,6 +89,15 @@ const Button = React.createClass({
         buttonPressTime: PropTypes.number,
 
         /**
+         * The class that should be set on the element
+         *
+         * @property className
+         * @type String
+         * @since 0.0.1
+        */
+        className: PropTypes.string,
+
+        /**
          * Whether the button resonses rapidly (keydown and mousedown).
          * Note: native HTMLButtonElements don't resonse rapidly --> the onClick event happens on mouseUp.
          *
@@ -107,13 +128,42 @@ const Button = React.createClass({
         name: PropTypes.string,
 
         /**
-         * Callback wheneveer the button gets clicked.
+         * Callback whenever the button gets clicked by the left mousebutton.
          *
          * @property onClick
          * @type Function
          * @since 0.0.1
         */
         onClick: PropTypes.func,
+
+        /**
+         * Callback wheneveer the button gets clicked by the middle mousebuttin.
+         *
+         * @property onMiddleClick
+         * @type Function
+         * @since 0.0.1
+        */
+        onMiddleClick: PropTypes.func,
+
+
+        /**
+         * Callback wheneveer the button gets clicked by the right mouse-button.
+         *
+         * @property onRightClick
+         * @type Function
+         * @since 0.0.1
+        */
+        onRightClick: PropTypes.func,
+
+        /**
+         * Whether the checkbox is readonly
+         *
+         * @property readOnly
+         * @type Boolean
+         * @default false
+         * @since 15.2.0
+        */
+        readOnly: PropTypes.bool,
 
         /**
          * Whether keypress should show active status. (should be set `false` for file-uploadbuttons)
@@ -124,6 +174,15 @@ const Button = React.createClass({
          * @since 0.0.5
         */
         showActivated: PropTypes.bool,
+
+        /**
+         * Inline style
+         *
+         * @property style
+         * @type object
+         * @since 0.0.1
+        */
+        style: PropTypes.object,
 
         /**
          * The tabIndex
@@ -166,6 +225,10 @@ const Button = React.createClass({
         const instance = this;
         instance._buttonNode = ReactDom.findDOMNode(instance);
         instance._mounted = true;
+        instance._knownMobile = (("ontouchstart" in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0));
+        if (instance.props.autoFocus) {
+            instance._focusLater = later(() => instance.focus(), 50);
+        }
     },
 
     /**
@@ -176,17 +239,19 @@ const Button = React.createClass({
      */
     componentWillUnmount() {
         this._mounted = false;
+        this._focusLater && this._focusLater.cancel();
     },
 
     /**
      * Sets the focus on the Component.
      *
      * @method focus
+     * @param [transitionTime] {Number} transition-time to focus the element into the view
      * @chainable
      * @since 0.0.1
      */
-    focus() {
-        this._buttonNode.focus();
+    focus(transitionTime) {
+        this._buttonNode.itsa_focus(null, null, transitionTime);
         return this;
     },
 
@@ -200,12 +265,13 @@ const Button = React.createClass({
     getDefaultProps() {
         return {
             activatedBy: [13, 32],
+            autoFocus: false,
             buttonPressTime: DEF_BUTTON_PRESS_TIME,
             directResponse: true,
             disabled: false,
+            readOnly: false,
             showActivated: true,
-            tabIndex: 1,
-            type: 'button'
+            type: "button"
         };
     },
 
@@ -218,7 +284,8 @@ const Button = React.createClass({
      */
     getInitialState() {
         return {
-            active: false
+            active: false,
+            mouseDown: false
         };
     },
 
@@ -230,14 +297,31 @@ const Button = React.createClass({
      * @since 0.0.1
      */
     handleClick(e) {
+        let button, leftClick, middleClick, rightClick;
         const instance = this,
               props = instance.props,
+              onMiddleClick = props.onMiddleClick,
+              onRightClick = props.onRightClick,
               onClick = props.onClick;
-        if (!instance._keyDown && !this._mouseDown) { // don't double execute
+        if (!props.disabled && !props.readOnly && !instance._keyDown && !this.state.mouseDown) { // don't double execute
             instance.focus();
-            if (onClick) {
-                e.preventDefault();
-                onClick(e.nativeEvent.which || 1);
+            if (onClick || onMiddleClick || onRightClick) {
+                button = e.nativeEvent.button || 1;
+                leftClick = (button<=1);
+                middleClick = (button===2);
+                rightClick = (button===3);
+                if ((onClick && leftClick) || (onMiddleClick && middleClick) || (onRightClick && rightClick)) {
+                    e.preventDefault();
+                }
+                if (onClick && leftClick) {
+                    onClick();
+                }
+                if (middleClick && onMiddleClick) {
+                    onMiddleClick();
+                }
+                if (rightClick && onRightClick) {
+                    onRightClick();
+                }
             }
         }
     },
@@ -258,33 +342,35 @@ const Button = React.createClass({
               keyCode = e.keyCode,
               isDirectResponse = (typeof directResponse===BOOLEAN) ? directResponse : props.directResponse;
 
-        if (keyCode===27) {
-            // escape keyDown in case it was set
-            instance._keyDown = false;
-            pressTimer && pressTimer.cancel();
-            if (instance.state.active) {
-                instance.setState({
-                    active: false
-                });
-            }
-        }
-        else {
-            if (forced || (activatedBy.indexOf(keyCode)!==-1)) {
-                instance._keyDown = true;
-                if (typeof props.toggled===BOOLEAN) {
-                    onClick && onClick(1);
+        if (!props.disabled && !props.readOnly && instance._mounted) {
+            if (keyCode===27) {
+                // escape keyDown in case it was set
+                instance._keyDown = false;
+                pressTimer && pressTimer.cancel();
+                if (instance.state.active) {
+                    instance.setState({
+                        active: false
+                    });
                 }
-                else {
-                    if (!instance.state.active) {
-                        instance.setState({
-                            active: true
-                        });
-                        pressTimer && pressTimer.cancel();
-                        instance.pressTimer = later(instance._processKeyUp.bind(instance, null, isDirectResponse, forced), props.buttonPressTime);
-                        if (isDirectResponse) {
-                            onClick && later(() => {
-                                onClick(1);
-                            }, 100); // we MUST delay, because an `onClick` that rerenders, would prevent `onKeyUp` from happening!
+            }
+            else {
+                if (forced || (activatedBy.indexOf(keyCode)!==-1)) {
+                    instance._keyDown = true;
+                    if (typeof props.toggled===BOOLEAN) {
+                        onClick && onClick();
+                    }
+                    else {
+                        if (!instance.state.active) {
+                            instance.setState({
+                                active: true
+                            });
+                            pressTimer && pressTimer.cancel();
+                            instance.pressTimer = later(instance._processKeyUp.bind(instance, null, isDirectResponse, forced), props.buttonPressTime);
+                            if (isDirectResponse && onClick) {
+                                later(() => {
+                                    onClick();
+                                }, 100); // we MUST delay, because an `onClick` that rerenders, would prevent `onKeyUp` from happening!
+                            }
                         }
                     }
                 }
@@ -298,7 +384,7 @@ const Button = React.createClass({
      * @method handleKeyUp
      * @since 0.0.1
      */
-    handleKeyUp(e) {
+    handleKeyUp() {
         // we must go async --> instance._keyDown cannot be set 'false' right away,
         // because the handleClick method needs to be processed first
         // if we don;t do this, props.onClick() would be executed twice when the spacebutton is pressed
@@ -318,8 +404,34 @@ const Button = React.createClass({
      * @since 0.0.1
      */
     handleMouseDown(e) {
-        this.handleClick(e);
-        this._mouseDown = true;
+        const instance = this,
+            props = instance.props;
+        if (!props.disabled && !props.readOnly && instance._mounted) {
+            instance.handleClick(e);
+            async(() => {
+                // check if still mounted
+                if (instance._mounted) {
+                    instance._mouseDown = true;
+                    instance.setState({
+                        active: true,
+                        mouseDown: true
+                    });
+                    if (instance._knownMobile) {
+                        async(() => instance.handleMouseUp());
+                    }
+                    else {
+                        // for those mobile devices that were not feature-detected, we need a fallback to simulate mouseUp,
+                        // to prevent the button from being blocked:
+                        instance._mouseUpEvt = later(instance.handleMouseUp, 2000);
+
+                    }
+                }
+            });
+        }
+    },
+
+    handleMouseOut() {
+        this.handleMouseUp();
     },
 
     /**
@@ -329,10 +441,16 @@ const Button = React.createClass({
      * @since 0.0.1
      */
     handleMouseUp() {
-        // we must go async --> instance._mouseDown cannot be set 'false' right away,
-        // because the handleClick method needs to be processed first
-        // if we don;t do this, props.onClick() would be executed twice when the spacebutton is pressed
-        async(() => this._mouseDown=false);
+        const instance = this;
+        // only if `_mouseDown` still is false --> it could be set `true` by `onMouseOut`
+        if (instance._mouseDown && instance._mounted) {
+            instance._mouseDown = false;
+            instance._mouseUpEvt && instance._mouseUpEvt.cancel();
+            instance.setState({
+                active: false,
+                mouseDown: false
+            });
+        }
     },
 
     /**
@@ -355,9 +473,8 @@ const Button = React.createClass({
      * @since 0.0.1
      */
     render() {
-        let classname = MAIN_CLASS,
+        let classname = MAIN_CLASS+FORM_ELEMENT_CLASS_SPACES,
             buttonHTML = this.props.buttonHTML,
-            dataAttrs = {},
             dangerouslySetInnerHTML, buttonText, handleClick,
             handleKeyDown, handleKeyUp, handleMouseDown, handleMouseUp;
 
@@ -371,11 +488,14 @@ const Button = React.createClass({
               ariaLabel = props["aria-label"] || saveButtonText || instance._saveHTML(buttonHTML);
 
         if (state.active || props.toggled) {
-            props.showActivated && (classname+=" "+MAIN_CLASS_PREFIX+"active");
+            if (props.showActivated || state.mouseDown) {
+                classname += " "+MAIN_CLASS_PREFIX+"active";
+            }
             props.toggled && (classname+=" "+MAIN_CLASS_PREFIX+"toggled");
         }
         isToggleButton && (classname+=" "+MAIN_CLASS_PREFIX+"togglebtn");
         props.className && (classname+=" "+props.className);
+        props.readOnly && (classname+=" readonly");
 
         if (!buttonHTML && !props.buttonText) {
             buttonHTML = WHITE_SPACE;
@@ -392,7 +512,9 @@ const Button = React.createClass({
                 handleMouseDown = instance.handleMouseDown;
                 handleMouseUp = instance.handleMouseUp;
             }
-            handleClick = instance.handleClick;
+            else {
+                handleClick = instance.handleClick;
+            }
             handleKeyDown = instance.handleKeyDown;
             handleKeyUp = instance.handleKeyUp;
         }
@@ -410,8 +532,10 @@ const Button = React.createClass({
                 onKeyDown={handleKeyDown}
                 onKeyUp={handleKeyUp}
                 onMouseDown={handleMouseDown}
+                onMouseOut={instance.handleMouseOut}
                 onMouseUp={handleMouseUp}
                 role="button"
+                style={props.style}
                 tabIndex={props.tabIndex}
                 type={props.type} >
                 {buttonText}
@@ -467,7 +591,7 @@ const Button = React.createClass({
                         active: false
                     });
                     if ((typeof directResponse===BOOLEAN) ? !directResponse : !props.directResponse) {
-                        onClick && onClick(1);
+                        onClick && onClick();
                     }
                 }
             }
@@ -484,7 +608,7 @@ const Button = React.createClass({
      * @since 0.0.1
      */
     _saveHTML(html) {
-        return html && html.replace(/<[^>]*>/g, '');
+        return html && html.replace(/<[^>]*>/g, "");
     }
 
 });

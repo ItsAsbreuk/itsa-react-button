@@ -1,6 +1,6 @@
 {
   "name": "itsa-react-button",
-  "version": "0.0.12",
+  "version": "15.2.19",
   "description": "Interactive button, like a normal button, but with extended behaviour",
   "author": [
     {
@@ -18,6 +18,7 @@
   "keywords": [
     "itsasbreuk",
     "itsa",
+    "react",
     "react-component",
     "itsa-react-button",
     "react-button"
@@ -31,9 +32,12 @@
     "lib": "./lib"
   },
   "dependencies": {
-    "itsa-utils": "0.0.3",
-    "react": "^0.14.0",
-    "react-dom": "^0.14.0"
+    "itsa-dom": "^1.1.9",
+    "itsa-utils": "^1.1.0"
+  },
+  "peerDependencies": {
+    "react": "^15.0.1",
+    "react-dom": "^15.0.1"
   },
   "devDependencies": {
     "babel-core": "^6.4.0",
@@ -52,7 +56,9 @@
     "jshint": "^2.5.5",
     "mocha": "^1.21.4",
     "node-sass": "^3.4.2",
-    "react-addons-test-utils": "^0.14.0",
+    "react": "^15.0.1",
+    "react-dom": "^15.0.1",
+    "react-addons-test-utils": "^15.0.1",
     "sass-loader": "^3.1.2",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.2",

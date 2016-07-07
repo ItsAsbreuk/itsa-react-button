@@ -34,17 +34,19 @@ describe("Button tests", function () {
                   accessKey={undefined}
                   aria-label={undefined}
                   aria-pressed={undefined}
-                  className="itsa-button"
+                  className="itsa-button itsa-formelement"
                   dangerouslySetInnerHTML={{__html: "&#160;"}}
                   disabled={false}
                   name={undefined}
-                  onClick={function noRefCheck() {}}
+                  onClick={undefined}
                   onKeyDown={function noRefCheck() {}}
                   onKeyUp={function noRefCheck() {}}
                   onMouseDown={function noRefCheck() {}}
+                  onMouseOut={function noRefCheck() {}}
                   onMouseUp={function noRefCheck() {}}
                   role="button"
-                  tabIndex={1}
+                  style={undefined}
+                  tabIndex={undefined}
                   type="button"
                 />
             );
@@ -59,6 +61,7 @@ describe("Button tests", function () {
                 name="my-button"
                 tabIndex={2}
                 type="submit"
+                readOnly={true}
                 disabled={true} />
             );
             const actual = renderer.getRenderOutput();
@@ -67,7 +70,7 @@ describe("Button tests", function () {
                   accessKey={[20]}
                   aria-label="Press me"
                   aria-pressed={undefined}
-                  className="itsa-button"
+                  className="itsa-button itsa-formelement readonly"
                   dangerouslySetInnerHTML={undefined}
                   disabled={true}
                   name="my-button"
@@ -75,8 +78,10 @@ describe("Button tests", function () {
                   onKeyDown={undefined}
                   onKeyUp={undefined}
                   onMouseDown={undefined}
+                  onMouseOut={function noRefCheck() {}}
                   onMouseUp={undefined}
                   role="button"
+                  style={undefined}
                   tabIndex={2}
                   type="submit"
                 >Press me</button>
@@ -92,17 +97,19 @@ describe("Button tests", function () {
                   accessKey={undefined}
                   aria-label="Press me"
                   aria-pressed={undefined}
-                  className="itsa-button"
+                  className="itsa-button itsa-formelement"
                   dangerouslySetInnerHTML={{__html: 'Press <b>me</b>'}}
                   disabled={false}
                   name={undefined}
-                  onClick={function noRefCheck() {}}
+                  onClick={undefined}
                   onKeyDown={function noRefCheck() {}}
                   onKeyUp={function noRefCheck() {}}
                   onMouseDown={function noRefCheck() {}}
+                  onMouseOut={function noRefCheck() {}}
                   onMouseUp={function noRefCheck() {}}
                   role="button"
-                  tabIndex={1}
+                  style={undefined}
+                  tabIndex={undefined}
                   type="button"
                 />
             );
@@ -117,17 +124,19 @@ describe("Button tests", function () {
                   accessKey={undefined}
                   aria-label="Press me"
                   aria-pressed={undefined}
-                  className="itsa-button"
+                  className="itsa-button itsa-formelement"
                   dangerouslySetInnerHTML={undefined}
                   disabled={false}
                   name={undefined}
-                  onClick={function noRefCheck() {}}
+                  onClick={undefined}
                   onKeyDown={function noRefCheck() {}}
                   onKeyUp={function noRefCheck() {}}
                   onMouseDown={function noRefCheck() {}}
+                  onMouseOut={function noRefCheck() {}}
                   onMouseUp={function noRefCheck() {}}
                   role="button"
-                  tabIndex={1}
+                  style={undefined}
+                  tabIndex={undefined}
                   type="button"
                 >
                   Press me
@@ -144,17 +153,19 @@ describe("Button tests", function () {
                   accessKey={undefined}
                   aria-label="Press me"
                   aria-pressed={undefined}
-                  className="itsa-button"
+                  className="itsa-button itsa-formelement"
                   dangerouslySetInnerHTML={{__html: 'Press <b>me</b>'}}
                   disabled={false}
                   name={undefined}
-                  onClick={function noRefCheck() {}}
+                  onClick={undefined}
                   onKeyDown={function noRefCheck() {}}
                   onKeyUp={function noRefCheck() {}}
                   onMouseDown={function noRefCheck() {}}
+                  onMouseOut={function noRefCheck() {}}
                   onMouseUp={function noRefCheck() {}}
                   role="button"
-                  tabIndex={1}
+                  style={undefined}
+                  tabIndex={undefined}
                   type="button"
                 />
             );
@@ -169,17 +180,19 @@ describe("Button tests", function () {
                   accessKey={undefined}
                   aria-label="Press me"
                   aria-pressed={true}
-                  className="itsa-button itsa-button-active itsa-button-toggled itsa-button-togglebtn"
+                  className="itsa-button itsa-formelement itsa-button-active itsa-button-toggled itsa-button-togglebtn"
                   dangerouslySetInnerHTML={undefined}
                   disabled={false}
                   name={undefined}
-                  onClick={function noRefCheck() {}}
+                  onClick={undefined}
                   onKeyDown={function noRefCheck() {}}
                   onKeyUp={function noRefCheck() {}}
                   onMouseDown={function noRefCheck() {}}
+                  onMouseOut={function noRefCheck() {}}
                   onMouseUp={function noRefCheck() {}}
                   role="button"
-                  tabIndex={1}
+                  style={undefined}
+                  tabIndex={undefined}
                   type="button"
                 >
                   Press me
@@ -196,17 +209,19 @@ describe("Button tests", function () {
                   accessKey={undefined}
                   aria-label="Press me"
                   aria-pressed={false}
-                  className="itsa-button itsa-button-togglebtn"
+                  className="itsa-button itsa-formelement itsa-button-togglebtn"
                   dangerouslySetInnerHTML={undefined}
                   disabled={false}
                   name={undefined}
-                  onClick={function noRefCheck() {}}
+                  onClick={undefined}
                   onKeyDown={function noRefCheck() {}}
                   onKeyUp={function noRefCheck() {}}
                   onMouseDown={function noRefCheck() {}}
+                  onMouseOut={function noRefCheck() {}}
                   onMouseUp={function noRefCheck() {}}
                   role="button"
-                  tabIndex={1}
+                  style={undefined}
+                  tabIndex={undefined}
                   type="button"
                 >
                   Press me
@@ -227,7 +242,8 @@ describe("Button tests", function () {
             const button = TestUtils.renderIntoDocument(<Button onClick={handleClick} />);
             const buttonNode = ReactDOM.findDOMNode(button);
             expect(clicked).to.be.false;
-            TestUtils.Simulate.click(buttonNode);
+            TestUtils.Simulate.mouseDown(buttonNode);
+            TestUtils.Simulate.mouseUp(buttonNode);
             expect(clicked).to.be.true;
         });
 

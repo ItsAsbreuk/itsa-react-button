@@ -59,6 +59,10 @@ button {
         cursor: pointer;
     }
 
+    &.itsa-button.readonly {
+        cursor: default;
+    }
+
     &.itsa-button-primary {
         background-color: $primary-btn-background-color;
         color: $primary-btn-color;
@@ -69,10 +73,10 @@ button {
         color: $toggled-btn-color;
     }
 
-    &.itsa-button:hover,
-    &.itsa-button.itsa-button-hover,
-    &.itsa-button:hover:focus,
-    &.itsa-button.itsa-button-hover:focus {
+    &.itsa-button:hover:not(.readonly),
+    &.itsa-button.itsa-button-hover:not(.readonly),
+    &.itsa-button:hover:focus:not(.readonly),
+    &.itsa-button.itsa-button-hover:focus:not(.readonly) {
         filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#1a000000',GradientType=0);
         background-image: -webkit-gradient(linear, 0 0, 0 100%, from(transparent), color-stop($focus-gradient, rgba(0,0,0, 0.05)), to(rgba(0,0,0, $hover-gradient-shade)));
         background-image: -webkit-linear-gradient(transparent, rgba(0,0,0, 0.05) $focus-gradient, rgba(0,0,0, $hover-gradient-shade));
@@ -83,6 +87,10 @@ button {
     }
 
     &.itsa-button:focus {
+        outline: 0;
+    }
+
+    &.itsa-button:focus:not(.readonly) {
         filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#1a000000',GradientType=0);
         background-image: -webkit-gradient(linear, 0 0, 0 100%, from(transparent), color-stop($focus-gradient, rgba(0,0,0, 0.05)), to(rgba(0,0,0, $focus-gradient-shade)));
         background-image: -webkit-linear-gradient(transparent, rgba(0,0,0, 0.05) $focus-gradient, rgba(0,0,0, $focus-gradient-shade));
@@ -90,27 +98,26 @@ button {
         background-image: -o-linear-gradient(transparent, rgba(0,0,0, 0.05) $focus-gradient, rgba(0,0,0, $focus-gradient-shade));
         background-image: linear-gradient(transparent, rgba(0,0,0, 0.05) $focus-gradient, rgba(0,0,0, $focus-gradient-shade));
         box-shadow: 0 0 0 1px rgba(0,0,0, $focus-shade) inset;
-        outline: 0;
     }
 
     &.itsa-button::-moz-focus-inner { /* firefox focusring */
         border: 0;
     }
 
-    &.itsa-button-active {
+    &.itsa-button-active:not(.readonly) {
         box-shadow: 0 0 0 1px rgba(0,0,0, 0.8) inset, 0 0 $active-depth rgba(0,0,0, $active-shade) inset;
     }
 
-    &.itsa-button:not(.itsa-button-togglebtn):active:hover,
-    &.itsa-button:not(.itsa-button-togglebtn).itsa-button-hover:active,
-    &.itsa-button:not(.itsa-button-togglebtn):active:focus,
-    &.itsa-button:not(.itsa-button-togglebtn):active:hover:focus,
-    &.itsa-button:not(.itsa-button-togglebtn).itsa-button-hover:active:focus,
-    &.itsa-button-active:not(.itsa-button-togglebtn):hover,
-    &.itsa-button-active:not(.itsa-button-togglebtn).itsa-button-hover,
-    &.itsa-button-active:not(.itsa-button-togglebtn):focus,
-    &.itsa-button-active:not(.itsa-button-togglebtn):hover:focus,
-    &.itsa-button-active:not(.itsa-button-togglebtn).itsa-button-hover:focus {
+    &.itsa-button:not(.itsa-button-togglebtn):not(.readonly):active:hover,
+    &.itsa-button:not(.itsa-button-togglebtn):not(.readonly).itsa-button-hover:active,
+    &.itsa-button:not(.itsa-button-togglebtn):not(.readonly):active:focus,
+    &.itsa-button:not(.itsa-button-togglebtn):not(.readonly):active:hover:focus,
+    &.itsa-button:not(.itsa-button-togglebtn):not(.readonly).itsa-button-hover:active:focus,
+    &.itsa-button-active:not(.itsa-button-togglebtn):not(.readonly):hover,
+    &.itsa-button-active:not(.itsa-button-togglebtn):not(.readonly).itsa-button-hover,
+    &.itsa-button-active:not(.itsa-button-togglebtn):not(.readonly):focus,
+    &.itsa-button-active:not(.itsa-button-togglebtn):not(.readonly):hover:focus,
+    &.itsa-button-active:not(.itsa-button-togglebtn):not(.readonly).itsa-button-hover:focus {
         box-shadow: 0 0 0 1px rgba(0,0,0, 0.8) inset, 0 0 $active-depth rgba(0,0,0, $active-hover-shade) inset;
     }
 
@@ -138,7 +145,7 @@ button {
         -moz-opacity: $disabled-opacity;
         opacity: $disabled-opacity;
         cursor: not-allowed;
-        box-shadow: 0 0 0 1px rgba(0,0,0, $disabled-shade) inset;
+        box-shadow: 0 0 0 1px rgba(0,0,0, $disabled-shade) inset !important;
         cursor: default;
     }
 
