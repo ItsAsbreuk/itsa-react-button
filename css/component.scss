@@ -138,7 +138,7 @@ button {
     &.itsa-button[disabled].itsa-button-active:focus:hover,
     &.itsa-button[disabled].itsa-button-hover.itsa-button-active:focus {
         border: none;
-        background-image: none;
+        background-image: none !important;
         filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
         filter: alpha(opacity=$disabled-opacity-IE);
         -khtml-opacity: $disabled-opacity;

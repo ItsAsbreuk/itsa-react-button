@@ -14,6 +14,8 @@
  * @since 0.0.1
 */
 
+require("itsa-dom");
+
 const React = require("react"),
     PropTypes = React.PropTypes,
     ReactDom = require("react-dom"),
@@ -186,7 +188,6 @@ const Button = React.createClass({
 
         /**
          * The tabIndex
-         * Default: 1
          *
          * @property tabIndex
          * @type Number
@@ -213,6 +214,19 @@ const Button = React.createClass({
          * @since 0.0.1
         */
         type: PropTypes.string
+    },
+
+    /**
+     * Blurs the Component.
+     *
+     * @method blur
+     * @chainable
+     * @since 0.0.1
+     */
+    blur() {
+        var instance = this;
+        instance._buttonNode.blur();
+        return instance;
     },
 
     /**
