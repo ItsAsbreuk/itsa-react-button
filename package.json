@@ -1,6 +1,6 @@
 {
   "name": "itsa-react-button",
-  "version": "15.2.21",
+  "version": "15.2.22",
   "description": "Interactive button, like a normal button, but with extended behaviour",
   "author": [
     {
@@ -32,7 +32,7 @@
     "lib": "./lib"
   },
   "dependencies": {
-    "itsa-dom": "^1.1.9",
+    "itsa-dom": "^1.1.11",
     "itsa-utils": "^1.1.0"
   },
   "peerDependencies": {
