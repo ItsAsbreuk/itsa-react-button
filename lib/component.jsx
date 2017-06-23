@@ -17,7 +17,7 @@
 require("itsa-dom");
 
 const React = require("react"),
-    PropTypes = React.PropTypes,
+    PropTypes = require("prop-types"),
     ReactDom = require("react-dom"),
     utils = require("itsa-utils"),
     later = utils.later,
@@ -29,192 +29,29 @@ const React = require("react"),
     BOOLEAN = "boolean",
     DEF_BUTTON_PRESS_TIME = 300;
 
-const Button = React.createClass({
+class Button extends React.Component {
 
-    propTypes: {
-        /**
-         * Array with the keys that can press the button when focussed.
-         * Default: [13, 32]
-         *
-         * @property activatedBy
-         * @type Array
-         * @since 0.0.1
-        */
-        activatedBy: PropTypes.array,
-
-        /**
-         * The aria-label. When not set, it will equal the buttonText
-         *
-         * @property aria-label
-         * @type String
-         * @since 0.0.1
-        */
-        "aria-label": PropTypes.string,
-
-        /**
-         * Whether to autofocus the Component.
-         *
-         * @property autoFocus
-         * @type Boolean
-         * @since 0.0.1
-        */
-        autoFocus: PropTypes.bool,
-
-        /**
-         * The Button-text. Will be escaped. If you need HTML, then use `buttonHTML` instead.
-         *
-         * @property buttonText
-         * @type String
-         * @since 0.0.1
-        */
-        buttonText: PropTypes.string,
-
-        /**
-         * The Button-text, retaining html-code. If you don't need HTML,
-         * then `buttonText` is preferred.
-         *
-         * @property buttonHTML
-         * @type String
-         * @since 0.0.1
-        */
-        buttonHTML: PropTypes.string,
-
-        /**
-         * The time that the button retains in its `pressed-state` when activated by a key-press.
-         *
-         * Default: 300ms
-         *
-         * @property buttonPressTime
-         * @type Number
-         * @since 0.0.1
-        */
-        buttonPressTime: PropTypes.number,
-
-        /**
-         * The class that should be set on the element
-         *
-         * @property className
-         * @type String
-         * @since 0.0.1
-        */
-        className: PropTypes.string,
-
-        /**
-         * Whether the button resonses rapidly (keydown and mousedown).
-         * Note: native HTMLButtonElements don't resonse rapidly --> the onClick event happens on mouseUp.
-         *
-         * Default: true
-         *
-         * @property directResponse
-         * @type Boolean
-         * @since 0.0.1
-        */
-        directResponse: PropTypes.bool,
-
-        /**
-         * Whether the button is disabled
-         *
-         * @property disabled
-         * @type Boolean
-         * @since 0.0.1
-        */
-        disabled: PropTypes.bool,
-
-        /**
-         * The name-attribute of the button
-         *
-         * @property name
-         * @type String
-         * @since 0.0.1
-        */
-        name: PropTypes.string,
-
-        /**
-         * Callback whenever the button gets clicked by the left mousebutton.
-         *
-         * @property onClick
-         * @type Function
-         * @since 0.0.1
-        */
-        onClick: PropTypes.func,
-
-        /**
-         * Callback wheneveer the button gets clicked by the middle mousebuttin.
-         *
-         * @property onMiddleClick
-         * @type Function
-         * @since 0.0.1
-        */
-        onMiddleClick: PropTypes.func,
-
-
-        /**
-         * Callback wheneveer the button gets clicked by the right mouse-button.
-         *
-         * @property onRightClick
-         * @type Function
-         * @since 0.0.1
-        */
-        onRightClick: PropTypes.func,
-
-        /**
-         * Whether the checkbox is readonly
-         *
-         * @property readOnly
-         * @type Boolean
-         * @default false
-         * @since 15.2.0
-        */
-        readOnly: PropTypes.bool,
-
-        /**
-         * Whether keypress should show active status. (should be set `false` for file-uploadbuttons)
-         * Default: true
-         *
-         * @property showActivated
-         * @type Boolean
-         * @since 0.0.5
-        */
-        showActivated: PropTypes.bool,
-
-        /**
-         * Inline style
-         *
-         * @property style
-         * @type object
-         * @since 0.0.1
-        */
-        style: PropTypes.object,
-
-        /**
-         * The tabIndex
-         *
-         * @property tabIndex
-         * @type Number
-         * @since 0.0.1
-        */
-        tabIndex: PropTypes.number,
-
-        /**
-         * Whether the button is in a toggle-state.
-         * You don;t need to use this directly: use the module ToggleButton instead.
-         *
-         * @property toggled
-         * @type Boolean
-         * @since 0.0.1
-        */
-        toggled: PropTypes.bool,
-
-        /**
-         * The type of the button
-         * Default: "button"
-         *
-         * @property children
-         * @type String
-         * @since 0.0.1
-        */
-        type: PropTypes.string
-    },
+    constructor(props) {
+        super(props);
+        const instance = this;
+        instance.state = {
+            active: false,
+            mouseDown: false
+        };
+        instance.blur = instance.blur.bind(instance);
+        instance.focus = instance.focus.bind(instance);
+        instance.handleBlur = instance.handleBlur.bind(instance);
+        instance.handleClick = instance.handleClick.bind(instance);
+        instance.handleKeyDown = instance.handleKeyDown.bind(instance);
+        instance.handleKeyUp = instance.handleKeyUp.bind(instance);
+        instance.handleMouseDown = instance.handleMouseDown.bind(instance);
+        instance.handleMouseOut = instance.handleMouseOut.bind(instance);
+        instance.handleMouseUp = instance.handleMouseUp.bind(instance);
+        instance.press = instance.press.bind(instance);
+        instance._getDataAttrs = instance._getDataAttrs.bind(instance);
+        instance._processKeyUp = instance._processKeyUp.bind(instance);
+        instance._saveHTML = instance._saveHTML.bind(instance);
+    }
 
     /**
      * Blurs the Component.
@@ -227,7 +64,7 @@ const Button = React.createClass({
         var instance = this;
         instance._buttonNode.blur();
         return instance;
-    },
+    }
 
     /**
      * componentDidMount does some initialization.
@@ -243,7 +80,7 @@ const Button = React.createClass({
         if (instance.props.autoFocus) {
             instance._focusLater = later(() => instance.focus(), 50);
         }
-    },
+    }
 
     /**
      * componentWilUnmount does some cleanup.
@@ -254,7 +91,7 @@ const Button = React.createClass({
     componentWillUnmount() {
         this._mounted = false;
         this._focusLater && this._focusLater.cancel();
-    },
+    }
 
     /**
      * Sets the focus on the Component.
@@ -268,41 +105,11 @@ const Button = React.createClass({
         var instance = this;
         instance._buttonNode.itsa_focus && instance._buttonNode.itsa_focus(null, null, transitionTime);
         return instance;
-    },
+    }
 
-    /**
-     * Returns the default props.
-     *
-     * @method getDefaultProps
-     * @return object
-     * @since 0.0.1
-     */
-    getDefaultProps() {
-        return {
-            activatedBy: [13, 32],
-            autoFocus: false,
-            buttonPressTime: DEF_BUTTON_PRESS_TIME,
-            directResponse: true,
-            disabled: false,
-            readOnly: false,
-            showActivated: true,
-            type: "button"
-        };
-    },
-
-    /**
-     * Returns the initial state.
-     *
-     * @method getInitialState
-     * @return object
-     * @since 0.0.1
-     */
-    getInitialState() {
-        return {
-            active: false,
-            mouseDown: false
-        };
-    },
+    handleBlur() {
+        this._keyDown = false;
+    }
 
     /**
      * Callback-fn for the onClick-event.
@@ -319,7 +126,6 @@ const Button = React.createClass({
               onRightClick = props.onRightClick,
               onClick = props.onClick;
         if (!props.disabled && !props.readOnly && !instance._keyDown && !this.state.mouseDown) { // don't double execute
-            instance.focus();
             if (onClick || onMiddleClick || onRightClick) {
                 button = e.nativeEvent.button || 1;
                 leftClick = (button<=1);
@@ -327,6 +133,8 @@ const Button = React.createClass({
                 rightClick = (button===3);
                 if ((onClick && leftClick) || (onMiddleClick && middleClick) || (onRightClick && rightClick)) {
                     e.preventDefault();
+                    // NOT element.focus or node.itsa_focus ! --> would have side-effects, besides, the node is in the view if it got clicked
+                    instance._buttonNode.focus();
                 }
                 if (onClick && leftClick) {
                     onClick();
@@ -339,7 +147,7 @@ const Button = React.createClass({
                 }
             }
         }
-    },
+    }
 
     /**
      * Callback-fn for the onKeyDown-event.
@@ -391,7 +199,7 @@ const Button = React.createClass({
                 }
             }
         }
-    },
+    }
 
     /**
      * Callback-fn for the onKeyUp-event.
@@ -410,7 +218,7 @@ const Button = React.createClass({
                 instance._processKeyUp(true);
             }
         });
-    },
+    }
 
     /**
      * Callback-fn for the onMouseDown-event.
@@ -443,11 +251,11 @@ const Button = React.createClass({
                 }
             });
         }
-    },
+    }
 
     handleMouseOut() {
         this.handleMouseUp();
-    },
+    }
 
     /**
      * Callback-fn for the onMouseUp-event.
@@ -466,7 +274,7 @@ const Button = React.createClass({
                 mouseDown: false
             });
         }
-    },
+    }
 
     /**
      * Callback-fn for the onClick-event.
@@ -478,7 +286,7 @@ const Button = React.createClass({
      */
     press(directResponse) {
         this.handleKeyDown({}, directResponse, true);
-    },
+    }
 
     /**
      * React render-method --> renderes the Component.
@@ -543,6 +351,7 @@ const Button = React.createClass({
                 dangerouslySetInnerHTML={dangerouslySetInnerHTML}
                 disabled={disabled}
                 name={props.name}
+                onBlur={instance.handleBlur}
                 onClick={handleClick}
                 onKeyDown={handleKeyDown}
                 onKeyUp={handleKeyUp}
@@ -556,7 +365,7 @@ const Button = React.createClass({
                 {buttonText}
             </button>
         );
-    },
+    }
 
     /**
      * Extracts the `data-*` attributes from props.
@@ -575,7 +384,7 @@ const Button = React.createClass({
             (key.substr(0,5).toLowerCase()==="data-") && (dataAttrs[key]=props[key]);
         });
         return dataAttrs;
-    },
+    }
 
     /**
      * React render-method --> renderes the Component.
@@ -611,7 +420,7 @@ const Button = React.createClass({
                 }
             }
         }
-    },
+    }
 
     /**
      * Returns a save string
@@ -625,7 +434,202 @@ const Button = React.createClass({
     _saveHTML(html) {
         return html && html.replace(/<[^>]*>/g, "");
     }
+}
 
-});
+Button.propTypes = {
+    /**
+     * Array with the keys that can press the button when focussed.
+     * Default: [13, 32]
+     *
+     * @property activatedBy
+     * @type Array
+     * @since 0.0.1
+    */
+    activatedBy: PropTypes.array,
+
+    /**
+     * The aria-label. When not set, it will equal the buttonText
+     *
+     * @property aria-label
+     * @type String
+     * @since 0.0.1
+    */
+    "aria-label": PropTypes.string,
+
+    /**
+     * Whether to autofocus the Component.
+     *
+     * @property autoFocus
+     * @type Boolean
+     * @since 0.0.1
+    */
+    autoFocus: PropTypes.bool,
+
+    /**
+     * The Button-text. Will be escaped. If you need HTML, then use `buttonHTML` instead.
+     *
+     * @property buttonText
+     * @type String
+     * @since 0.0.1
+    */
+    buttonText: PropTypes.string,
+
+    /**
+     * The Button-text, retaining html-code. If you don't need HTML,
+     * then `buttonText` is preferred.
+     *
+     * @property buttonHTML
+     * @type String
+     * @since 0.0.1
+    */
+    buttonHTML: PropTypes.string,
+
+    /**
+     * The time that the button retains in its `pressed-state` when activated by a key-press.
+     *
+     * Default: 300ms
+     *
+     * @property buttonPressTime
+     * @type Number
+     * @since 0.0.1
+    */
+    buttonPressTime: PropTypes.number,
+
+    /**
+     * The class that should be set on the element
+     *
+     * @property className
+     * @type String
+     * @since 0.0.1
+    */
+    className: PropTypes.string,
+
+    /**
+     * Whether the button resonses rapidly (keydown and mousedown).
+     * Note: native HTMLButtonElements don't resonse rapidly --> the onClick event happens on mouseUp.
+     *
+     * Default: true
+     *
+     * @property directResponse
+     * @type Boolean
+     * @since 0.0.1
+    */
+    directResponse: PropTypes.bool,
+
+    /**
+     * Whether the button is disabled
+     *
+     * @property disabled
+     * @type Boolean
+     * @since 0.0.1
+    */
+    disabled: PropTypes.bool,
+
+    /**
+     * The name-attribute of the button
+     *
+     * @property name
+     * @type String
+     * @since 0.0.1
+    */
+    name: PropTypes.string,
+
+    /**
+     * Callback whenever the button gets clicked by the left mousebutton.
+     *
+     * @property onClick
+     * @type Function
+     * @since 0.0.1
+    */
+    onClick: PropTypes.func,
+
+    /**
+     * Callback wheneveer the button gets clicked by the middle mousebuttin.
+     *
+     * @property onMiddleClick
+     * @type Function
+     * @since 0.0.1
+    */
+    onMiddleClick: PropTypes.func,
+
+
+    /**
+     * Callback wheneveer the button gets clicked by the right mouse-button.
+     *
+     * @property onRightClick
+     * @type Function
+     * @since 0.0.1
+    */
+    onRightClick: PropTypes.func,
+
+    /**
+     * Whether the checkbox is readonly
+     *
+     * @property readOnly
+     * @type Boolean
+     * @default false
+     * @since 15.2.0
+    */
+    readOnly: PropTypes.bool,
+
+    /**
+     * Whether keypress should show active status. (should be set `false` for file-uploadbuttons)
+     * Default: true
+     *
+     * @property showActivated
+     * @type Boolean
+     * @since 0.0.5
+    */
+    showActivated: PropTypes.bool,
+
+    /**
+     * Inline style
+     *
+     * @property style
+     * @type object
+     * @since 0.0.1
+    */
+    style: PropTypes.object,
+
+    /**
+     * The tabIndex
+     *
+     * @property tabIndex
+     * @type Number
+     * @since 0.0.1
+    */
+    tabIndex: PropTypes.number,
+
+    /**
+     * Whether the button is in a toggle-state.
+     * You don;t need to use this directly: use the module ToggleButton instead.
+     *
+     * @property toggled
+     * @type Boolean
+     * @since 0.0.1
+    */
+    toggled: PropTypes.bool,
+
+    /**
+     * The type of the button
+     * Default: "button"
+     *
+     * @property children
+     * @type String
+     * @since 0.0.1
+    */
+    type: PropTypes.string
+};
+
+Button.defaultProps = {
+    activatedBy: [13, 32],
+    autoFocus: false,
+    buttonPressTime: DEF_BUTTON_PRESS_TIME,
+    directResponse: true,
+    disabled: false,
+    readOnly: false,
+    showActivated: true,
+    type: "button"
+};
 
 module.exports = Button;

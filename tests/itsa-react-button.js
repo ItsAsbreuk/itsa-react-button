@@ -4,7 +4,7 @@
 
 const React = require("react");
 const ReactDOM = require("react-dom");
-const TestUtils = require("react-addons-test-utils");
+const TestUtils = require("react-dom/test-utils");
 
 const chai = require("chai");
 const expect = chai.expect;
@@ -38,6 +38,7 @@ describe("Button tests", function () {
                   dangerouslySetInnerHTML={{__html: "&#160;"}}
                   disabled={false}
                   name={undefined}
+                  onBlur={function noRefCheck() {}}
                   onClick={undefined}
                   onKeyDown={function noRefCheck() {}}
                   onKeyUp={function noRefCheck() {}}
@@ -74,6 +75,7 @@ describe("Button tests", function () {
                   dangerouslySetInnerHTML={undefined}
                   disabled={true}
                   name="my-button"
+                  onBlur={function noRefCheck() {}}
                   onClick={undefined}
                   onKeyDown={undefined}
                   onKeyUp={undefined}
@@ -101,6 +103,7 @@ describe("Button tests", function () {
                   dangerouslySetInnerHTML={{__html: 'Press <b>me</b>'}}
                   disabled={false}
                   name={undefined}
+                  onBlur={function noRefCheck() {}}
                   onClick={undefined}
                   onKeyDown={function noRefCheck() {}}
                   onKeyUp={function noRefCheck() {}}
@@ -128,6 +131,7 @@ describe("Button tests", function () {
                   dangerouslySetInnerHTML={undefined}
                   disabled={false}
                   name={undefined}
+                  onBlur={function noRefCheck() {}}
                   onClick={undefined}
                   onKeyDown={function noRefCheck() {}}
                   onKeyUp={function noRefCheck() {}}
@@ -157,6 +161,7 @@ describe("Button tests", function () {
                   dangerouslySetInnerHTML={{__html: 'Press <b>me</b>'}}
                   disabled={false}
                   name={undefined}
+                  onBlur={function noRefCheck() {}}
                   onClick={undefined}
                   onKeyDown={function noRefCheck() {}}
                   onKeyUp={function noRefCheck() {}}
@@ -184,6 +189,7 @@ describe("Button tests", function () {
                   dangerouslySetInnerHTML={undefined}
                   disabled={false}
                   name={undefined}
+                  onBlur={function noRefCheck() {}}
                   onClick={undefined}
                   onKeyDown={function noRefCheck() {}}
                   onKeyUp={function noRefCheck() {}}
@@ -213,6 +219,7 @@ describe("Button tests", function () {
                   dangerouslySetInnerHTML={undefined}
                   disabled={false}
                   name={undefined}
+                  onBlur={function noRefCheck() {}}
                   onClick={undefined}
                   onKeyDown={function noRefCheck() {}}
                   onKeyUp={function noRefCheck() {}}

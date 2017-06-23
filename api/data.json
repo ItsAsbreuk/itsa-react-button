@@ -55,217 +55,18 @@
     "classitems": [
         {
             "file": "lib/component.jsx",
-            "line": 33,
-            "description": "Array with the keys that can press the button when focussed.\nDefault: [13, 32]",
-            "itemtype": "property",
-            "name": "activatedBy",
-            "type": "Array",
+            "line": 56,
+            "description": "Blurs the Component.",
+            "itemtype": "method",
+            "name": "blur",
+            "chainable": 1,
             "since": "0.0.1",
             "class": "Button",
             "module": "itsa-react-button"
         },
         {
             "file": "lib/component.jsx",
-            "line": 43,
-            "description": "The aria-label. When not set, it will equal the buttonText",
-            "itemtype": "property",
-            "name": "aria-label",
-            "type": "String",
-            "since": "0.0.1",
-            "class": "Button",
-            "module": "itsa-react-button"
-        },
-        {
-            "file": "lib/component.jsx",
-            "line": 52,
-            "description": "Whether to autofocus the Component.",
-            "itemtype": "property",
-            "name": "autoFocus",
-            "type": "Boolean",
-            "since": "0.0.1",
-            "class": "Button",
-            "module": "itsa-react-button"
-        },
-        {
-            "file": "lib/component.jsx",
-            "line": 61,
-            "description": "The Button-text. Will be escaped. If you need HTML, then use `buttonHTML` instead.",
-            "itemtype": "property",
-            "name": "buttonText",
-            "type": "String",
-            "since": "0.0.1",
-            "class": "Button",
-            "module": "itsa-react-button"
-        },
-        {
-            "file": "lib/component.jsx",
-            "line": 70,
-            "description": "The Button-text, retaining html-code. If you don't need HTML,\nthen `buttonText` is preferred.",
-            "itemtype": "property",
-            "name": "buttonHTML",
-            "type": "String",
-            "since": "0.0.1",
-            "class": "Button",
-            "module": "itsa-react-button"
-        },
-        {
-            "file": "lib/component.jsx",
-            "line": 80,
-            "description": "The time that the button retains in its `pressed-state` when activated by a key-press.\n\nDefault: 300ms",
-            "itemtype": "property",
-            "name": "buttonPressTime",
-            "type": "Number",
-            "since": "0.0.1",
-            "class": "Button",
-            "module": "itsa-react-button"
-        },
-        {
-            "file": "lib/component.jsx",
-            "line": 91,
-            "description": "The class that should be set on the element",
-            "itemtype": "property",
-            "name": "className",
-            "type": "String",
-            "since": "0.0.1",
-            "class": "Button",
-            "module": "itsa-react-button"
-        },
-        {
-            "file": "lib/component.jsx",
-            "line": 100,
-            "description": "Whether the button resonses rapidly (keydown and mousedown).\nNote: native HTMLButtonElements don't resonse rapidly --> the onClick event happens on mouseUp.\n\nDefault: true",
-            "itemtype": "property",
-            "name": "directResponse",
-            "type": "Boolean",
-            "since": "0.0.1",
-            "class": "Button",
-            "module": "itsa-react-button"
-        },
-        {
-            "file": "lib/component.jsx",
-            "line": 112,
-            "description": "Whether the button is disabled",
-            "itemtype": "property",
-            "name": "disabled",
-            "type": "Boolean",
-            "since": "0.0.1",
-            "class": "Button",
-            "module": "itsa-react-button"
-        },
-        {
-            "file": "lib/component.jsx",
-            "line": 121,
-            "description": "The name-attribute of the button",
-            "itemtype": "property",
-            "name": "name",
-            "type": "String",
-            "since": "0.0.1",
-            "class": "Button",
-            "module": "itsa-react-button"
-        },
-        {
-            "file": "lib/component.jsx",
-            "line": 130,
-            "description": "Callback whenever the button gets clicked by the left mousebutton.",
-            "itemtype": "property",
-            "name": "onClick",
-            "type": "Function",
-            "since": "0.0.1",
-            "class": "Button",
-            "module": "itsa-react-button"
-        },
-        {
-            "file": "lib/component.jsx",
-            "line": 139,
-            "description": "Callback wheneveer the button gets clicked by the middle mousebuttin.",
-            "itemtype": "property",
-            "name": "onMiddleClick",
-            "type": "Function",
-            "since": "0.0.1",
-            "class": "Button",
-            "module": "itsa-react-button"
-        },
-        {
-            "file": "lib/component.jsx",
-            "line": 149,
-            "description": "Callback wheneveer the button gets clicked by the right mouse-button.",
-            "itemtype": "property",
-            "name": "onRightClick",
-            "type": "Function",
-            "since": "0.0.1",
-            "class": "Button",
-            "module": "itsa-react-button"
-        },
-        {
-            "file": "lib/component.jsx",
-            "line": 158,
-            "description": "Whether the checkbox is readonly",
-            "itemtype": "property",
-            "name": "readOnly",
-            "type": "Boolean",
-            "default": "false",
-            "since": "15.2.0",
-            "class": "Button",
-            "module": "itsa-react-button"
-        },
-        {
-            "file": "lib/component.jsx",
-            "line": 168,
-            "description": "Whether keypress should show active status. (should be set `false` for file-uploadbuttons)\nDefault: true",
-            "itemtype": "property",
-            "name": "showActivated",
-            "type": "Boolean",
-            "since": "0.0.5",
-            "class": "Button",
-            "module": "itsa-react-button"
-        },
-        {
-            "file": "lib/component.jsx",
-            "line": 178,
-            "description": "Inline style",
-            "itemtype": "property",
-            "name": "style",
-            "type": "object",
-            "since": "0.0.1",
-            "class": "Button",
-            "module": "itsa-react-button"
-        },
-        {
-            "file": "lib/component.jsx",
-            "line": 187,
-            "description": "The tabIndex\nDefault: 1",
-            "itemtype": "property",
-            "name": "tabIndex",
-            "type": "Number",
-            "since": "0.0.1",
-            "class": "Button",
-            "module": "itsa-react-button"
-        },
-        {
-            "file": "lib/component.jsx",
-            "line": 197,
-            "description": "Whether the button is in a toggle-state.\nYou don;t need to use this directly: use the module ToggleButton instead.",
-            "itemtype": "property",
-            "name": "toggled",
-            "type": "Boolean",
-            "since": "0.0.1",
-            "class": "Button",
-            "module": "itsa-react-button"
-        },
-        {
-            "file": "lib/component.jsx",
-            "line": 207,
-            "description": "The type of the button\nDefault: \"button\"",
-            "itemtype": "property",
-            "name": "children",
-            "type": "String",
-            "since": "0.0.1",
-            "class": "Button",
-            "module": "itsa-react-button"
-        },
-        {
-            "file": "lib/component.jsx",
-            "line": 218,
+            "line": 69,
             "description": "componentDidMount does some initialization.",
             "itemtype": "method",
             "name": "componentDidMount",
@@ -275,7 +76,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 234,
+            "line": 85,
             "description": "componentWilUnmount does some cleanup.",
             "itemtype": "method",
             "name": "componentWillUnmount",
@@ -285,10 +86,18 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 245,
+            "line": 96,
             "description": "Sets the focus on the Component.",
             "itemtype": "method",
             "name": "focus",
+            "params": [
+                {
+                    "name": "transitionTime",
+                    "description": "transition-time to focus the element into the view",
+                    "type": "Number",
+                    "optional": true
+                }
+            ],
             "chainable": 1,
             "since": "0.0.1",
             "class": "Button",
@@ -296,33 +105,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 257,
-            "description": "Returns the default props.",
-            "itemtype": "method",
-            "name": "getDefaultProps",
-            "return": {
-                "description": "object"
-            },
-            "since": "0.0.1",
-            "class": "Button",
-            "module": "itsa-react-button"
-        },
-        {
-            "file": "lib/component.jsx",
-            "line": 277,
-            "description": "Returns the initial state.",
-            "itemtype": "method",
-            "name": "getInitialState",
-            "return": {
-                "description": "object"
-            },
-            "since": "0.0.1",
-            "class": "Button",
-            "module": "itsa-react-button"
-        },
-        {
-            "file": "lib/component.jsx",
-            "line": 291,
+            "line": 114,
             "description": "Callback-fn for the onClick-event.\nWill invoke `this.props.onChange`",
             "itemtype": "method",
             "name": "handleClick",
@@ -332,7 +115,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 328,
+            "line": 152,
             "description": "Callback-fn for the onKeyDown-event.",
             "itemtype": "method",
             "name": "handleKeyDown",
@@ -342,7 +125,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 380,
+            "line": 204,
             "description": "Callback-fn for the onKeyUp-event.",
             "itemtype": "method",
             "name": "handleKeyUp",
@@ -352,7 +135,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 399,
+            "line": 223,
             "description": "Callback-fn for the onMouseDown-event.",
             "itemtype": "method",
             "name": "handleMouseDown",
@@ -362,7 +145,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 433,
+            "line": 260,
             "description": "Callback-fn for the onMouseUp-event.",
             "itemtype": "method",
             "name": "handleMouseUp",
@@ -372,7 +155,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 452,
+            "line": 279,
             "description": "Callback-fn for the onClick-event.\nWill invoke `this.props.onChange`",
             "itemtype": "method",
             "name": "press",
@@ -388,7 +171,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 464,
+            "line": 291,
             "description": "React render-method --> renderes the Component.",
             "itemtype": "method",
             "name": "render",
@@ -401,7 +184,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 542,
+            "line": 370,
             "description": "Extracts the `data-*` attributes from props.",
             "itemtype": "method",
             "name": "_getDataAttrs",
@@ -416,7 +199,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 561,
+            "line": 389,
             "description": "React render-method --> renderes the Component.",
             "itemtype": "method",
             "name": "_processKeyUp",
@@ -442,7 +225,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 597,
+            "line": 425,
             "description": "Returns a save string",
             "itemtype": "method",
             "name": "_saveHTML",
@@ -457,6 +240,216 @@
             "return": {
                 "description": "String"
             },
+            "since": "0.0.1",
+            "class": "Button",
+            "module": "itsa-react-button"
+        },
+        {
+            "file": "lib/component.jsx",
+            "line": 440,
+            "description": "Array with the keys that can press the button when focussed.\nDefault: [13, 32]",
+            "itemtype": "property",
+            "name": "activatedBy",
+            "type": "Array",
+            "since": "0.0.1",
+            "class": "Button",
+            "module": "itsa-react-button"
+        },
+        {
+            "file": "lib/component.jsx",
+            "line": 450,
+            "description": "The aria-label. When not set, it will equal the buttonText",
+            "itemtype": "property",
+            "name": "aria-label",
+            "type": "String",
+            "since": "0.0.1",
+            "class": "Button",
+            "module": "itsa-react-button"
+        },
+        {
+            "file": "lib/component.jsx",
+            "line": 459,
+            "description": "Whether to autofocus the Component.",
+            "itemtype": "property",
+            "name": "autoFocus",
+            "type": "Boolean",
+            "since": "0.0.1",
+            "class": "Button",
+            "module": "itsa-react-button"
+        },
+        {
+            "file": "lib/component.jsx",
+            "line": 468,
+            "description": "The Button-text. Will be escaped. If you need HTML, then use `buttonHTML` instead.",
+            "itemtype": "property",
+            "name": "buttonText",
+            "type": "String",
+            "since": "0.0.1",
+            "class": "Button",
+            "module": "itsa-react-button"
+        },
+        {
+            "file": "lib/component.jsx",
+            "line": 477,
+            "description": "The Button-text, retaining html-code. If you don't need HTML,\nthen `buttonText` is preferred.",
+            "itemtype": "property",
+            "name": "buttonHTML",
+            "type": "String",
+            "since": "0.0.1",
+            "class": "Button",
+            "module": "itsa-react-button"
+        },
+        {
+            "file": "lib/component.jsx",
+            "line": 487,
+            "description": "The time that the button retains in its `pressed-state` when activated by a key-press.\n\nDefault: 300ms",
+            "itemtype": "property",
+            "name": "buttonPressTime",
+            "type": "Number",
+            "since": "0.0.1",
+            "class": "Button",
+            "module": "itsa-react-button"
+        },
+        {
+            "file": "lib/component.jsx",
+            "line": 498,
+            "description": "The class that should be set on the element",
+            "itemtype": "property",
+            "name": "className",
+            "type": "String",
+            "since": "0.0.1",
+            "class": "Button",
+            "module": "itsa-react-button"
+        },
+        {
+            "file": "lib/component.jsx",
+            "line": 507,
+            "description": "Whether the button resonses rapidly (keydown and mousedown).\nNote: native HTMLButtonElements don't resonse rapidly --> the onClick event happens on mouseUp.\n\nDefault: true",
+            "itemtype": "property",
+            "name": "directResponse",
+            "type": "Boolean",
+            "since": "0.0.1",
+            "class": "Button",
+            "module": "itsa-react-button"
+        },
+        {
+            "file": "lib/component.jsx",
+            "line": 519,
+            "description": "Whether the button is disabled",
+            "itemtype": "property",
+            "name": "disabled",
+            "type": "Boolean",
+            "since": "0.0.1",
+            "class": "Button",
+            "module": "itsa-react-button"
+        },
+        {
+            "file": "lib/component.jsx",
+            "line": 528,
+            "description": "The name-attribute of the button",
+            "itemtype": "property",
+            "name": "name",
+            "type": "String",
+            "since": "0.0.1",
+            "class": "Button",
+            "module": "itsa-react-button"
+        },
+        {
+            "file": "lib/component.jsx",
+            "line": 537,
+            "description": "Callback whenever the button gets clicked by the left mousebutton.",
+            "itemtype": "property",
+            "name": "onClick",
+            "type": "Function",
+            "since": "0.0.1",
+            "class": "Button",
+            "module": "itsa-react-button"
+        },
+        {
+            "file": "lib/component.jsx",
+            "line": 546,
+            "description": "Callback wheneveer the button gets clicked by the middle mousebuttin.",
+            "itemtype": "property",
+            "name": "onMiddleClick",
+            "type": "Function",
+            "since": "0.0.1",
+            "class": "Button",
+            "module": "itsa-react-button"
+        },
+        {
+            "file": "lib/component.jsx",
+            "line": 556,
+            "description": "Callback wheneveer the button gets clicked by the right mouse-button.",
+            "itemtype": "property",
+            "name": "onRightClick",
+            "type": "Function",
+            "since": "0.0.1",
+            "class": "Button",
+            "module": "itsa-react-button"
+        },
+        {
+            "file": "lib/component.jsx",
+            "line": 565,
+            "description": "Whether the checkbox is readonly",
+            "itemtype": "property",
+            "name": "readOnly",
+            "type": "Boolean",
+            "default": "false",
+            "since": "15.2.0",
+            "class": "Button",
+            "module": "itsa-react-button"
+        },
+        {
+            "file": "lib/component.jsx",
+            "line": 575,
+            "description": "Whether keypress should show active status. (should be set `false` for file-uploadbuttons)\nDefault: true",
+            "itemtype": "property",
+            "name": "showActivated",
+            "type": "Boolean",
+            "since": "0.0.5",
+            "class": "Button",
+            "module": "itsa-react-button"
+        },
+        {
+            "file": "lib/component.jsx",
+            "line": 585,
+            "description": "Inline style",
+            "itemtype": "property",
+            "name": "style",
+            "type": "object",
+            "since": "0.0.1",
+            "class": "Button",
+            "module": "itsa-react-button"
+        },
+        {
+            "file": "lib/component.jsx",
+            "line": 594,
+            "description": "The tabIndex",
+            "itemtype": "property",
+            "name": "tabIndex",
+            "type": "Number",
+            "since": "0.0.1",
+            "class": "Button",
+            "module": "itsa-react-button"
+        },
+        {
+            "file": "lib/component.jsx",
+            "line": 603,
+            "description": "Whether the button is in a toggle-state.\nYou don;t need to use this directly: use the module ToggleButton instead.",
+            "itemtype": "property",
+            "name": "toggled",
+            "type": "Boolean",
+            "since": "0.0.1",
+            "class": "Button",
+            "module": "itsa-react-button"
+        },
+        {
+            "file": "lib/component.jsx",
+            "line": 613,
+            "description": "The type of the button\nDefault: \"button\"",
+            "itemtype": "property",
+            "name": "children",
+            "type": "String",
             "since": "0.0.1",
             "class": "Button",
             "module": "itsa-react-button"

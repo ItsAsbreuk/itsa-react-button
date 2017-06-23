@@ -1,6 +1,6 @@
 {
   "name": "itsa-react-button",
-  "version": "15.2.22",
+  "version": "16.0.0",
   "description": "Interactive button, like a normal button, but with extended behaviour",
   "author": [
     {
@@ -25,19 +25,20 @@
   ],
   "main": "./lib/component.jsx",
   "engines": {
-    "node": "*"
+    "node": ">=5"
   },
   "directories": {
     "css": "./css",
     "lib": "./lib"
   },
   "dependencies": {
-    "itsa-dom": "^1.1.11",
-    "itsa-utils": "^1.1.0"
+    "itsa-dom": "^1.2.0",
+    "itsa-utils": "^1.4.0",
+    "prop-types": "^15.5.10"
   },
   "peerDependencies": {
-    "react": "^15.0.1",
-    "react-dom": "^15.0.1"
+    "react": ">=15",
+    "react-dom": ">=15"
   },
   "devDependencies": {
     "babel-core": "^6.4.0",
@@ -48,17 +49,17 @@
     "chai": "^3.4.1",
     "chai-equal-jsx": "^1.0.9",
     "css-loader": "^0.23.1",
-    "eslint": "^1.10.3",
-    "eslint-plugin-react": "^3.15.0",
+    "eslint": "^4.0.0",
+    "eslint-plugin-react": "^7.1.0",
     "istanbul": "^0.3.0",
     "jsdom": "^7.2.2",
     "jsdom-global": "^1.6.1",
     "jshint": "^2.5.5",
     "mocha": "^1.21.4",
     "node-sass": "^3.4.2",
-    "react": "^15.0.1",
-    "react-dom": "^15.0.1",
+    "react": "^15.6.1",
     "react-addons-test-utils": "^15.0.1",
+    "react-dom": "^15.6.1",
     "sass-loader": "^3.1.2",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.2",
