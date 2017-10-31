@@ -1,7 +1,10 @@
+const path = require('path'),
+    cwd = process.cwd();
+
 module.exports = {
     entry: "./app.js",
     output: {
-        path: "./examples",
+        path: path.resolve(cwd, 'examples/'),
         filename: "app.js" // Template based on keys in entry above
     },
     module: {
