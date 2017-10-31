@@ -1,5 +1,5 @@
 $btn-color: #444;
-$btn-color-rgba-opacity: 0.80;
+$btn-color-rgba-opacity: 0.8;
 $btn-background-color: #E6E6E6;
 
 $primary-btn-color: #FFF;
@@ -20,7 +20,7 @@ $active-hover-shade: 1;
 
 $disabled-shade: 0.15;
 $disabled-opacity: 0.6;
-$disabled-opacity-IE: 100*$disabled-opacity;
+$disabled-opacity-IE: 60;
 
 button {
     &.itsa-button {
@@ -31,14 +31,13 @@ button {
         font-size: 100%;
         color: $btn-color; /* rgba not supported (IE 8) */
         color: rgba(0, 0, 0, $btn-color-rgba-opacity); /* rgba supported */
-        border: 1px solid #999;  /*IE 6/7/8*/
-        border: none rgba(0, 0, 0, 0);  /*IE9 + everything else*/
+        border: 1px solid #999;  /* IE 6/7/8 */
+        border: none rgba(0, 0, 0, 0);  /* IE9 + everything else */
         background-color: $btn-background-color;
         text-decoration: none;
-        box-shadow: 0 0 0 1px rgba(0,0,0, 0.15) inset;
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15) inset;
         display: inline-block;
         position: relative;
-        vertical-align: middle;
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
         box-sizing: border-box;
@@ -57,56 +56,74 @@ button {
         text-align: center;
         cursor: pointer;
     }
+}
 
+button {
     &.itsa-button.readonly {
         cursor: default;
     }
+}
 
+button {
     &.itsa-button-primary {
         background-color: $primary-btn-background-color;
         color: $primary-btn-color;
     }
+}
 
+button {
     &.itsa-button-toggled {
         background-color: $toggled-btn-background-color;
         color: $toggled-btn-color;
     }
+}
 
+button {
     &.itsa-button:hover:not(.readonly),
     &.itsa-button.itsa-button-hover:not(.readonly),
     &.itsa-button:hover:focus:not(.readonly),
     &.itsa-button.itsa-button-hover:focus:not(.readonly) {
-        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#1a000000',GradientType=0);
-        background-image: -webkit-gradient(linear, 0 0, 0 100%, from(transparent), color-stop($focus-gradient, rgba(0,0,0, 0.05)), to(rgba(0,0,0, $hover-gradient-shade)));
-        background-image: -webkit-linear-gradient(transparent, rgba(0,0,0, 0.05) $focus-gradient, rgba(0,0,0, $hover-gradient-shade));
-        background-image: -moz-linear-gradient(top, rgba(0,0,0, 0.05) $focus-gradient, rgba(0,0,0, $hover-gradient-shade));
-        background-image: -o-linear-gradient(transparent, rgba(0,0,0, 0.05) $focus-gradient, rgba(0,0,0, $hover-gradient-shade));
-        background-image: linear-gradient(transparent, rgba(0,0,0, 0.05) $focus-gradient, rgba(0,0,0, $hover-gradient-shade));
-        box-shadow: 0 0 0 1px rgba(0,0,0, $hover-shade) inset;
+        filter: progid:dximagetransform.microsoft.gradient(startColorstr='#00000000', endColorstr='#1a000000', GradientType=0);
+        background-image: -webkit-gradient(linear, 0 0, 0 100%, from(transparent), color-stop($focus-gradient, rgba(0, 0, 0, 0.05)), to(rgba(0, 0, 0, $hover-gradient-shade)));
+        background-image: -webkit-linear-gradient(transparent, rgba(0, 0, 0, 0.05) $focus-gradient, rgba(0, 0, 0, $hover-gradient-shade));
+        background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0.05) $focus-gradient, rgba(0, 0, 0, $hover-gradient-shade));
+        background-image: -o-linear-gradient(transparent, rgba(0, 0, 0, 0.05) $focus-gradient, rgba(0, 0, 0, $hover-gradient-shade));
+        background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.05) $focus-gradient, rgba(0, 0, 0, $hover-gradient-shade));
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, $hover-shade) inset;
     }
+}
 
+button {
     &.itsa-button:focus {
         outline: 0;
     }
+}
 
+button {
     &.itsa-button:focus:not(.readonly) {
-        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#1a000000',GradientType=0);
-        background-image: -webkit-gradient(linear, 0 0, 0 100%, from(transparent), color-stop($focus-gradient, rgba(0,0,0, 0.05)), to(rgba(0,0,0, $focus-gradient-shade)));
-        background-image: -webkit-linear-gradient(transparent, rgba(0,0,0, 0.05) $focus-gradient, rgba(0,0,0, $focus-gradient-shade));
-        background-image: -moz-linear-gradient(top, rgba(0,0,0, 0.05) $focus-gradient, rgba(0,0,0, $focus-gradient-shade));
-        background-image: -o-linear-gradient(transparent, rgba(0,0,0, 0.05) $focus-gradient, rgba(0,0,0, $focus-gradient-shade));
-        background-image: linear-gradient(transparent, rgba(0,0,0, 0.05) $focus-gradient, rgba(0,0,0, $focus-gradient-shade));
-        box-shadow: 0 0 0 1px rgba(0,0,0, $focus-shade) inset;
+        filter: progid:dximagetransform.microsoft.gradient(startColorstr='#00000000', endColorstr='#1a000000', GradientType=0);
+        background-image: -webkit-gradient(linear, 0 0, 0 100%, from(transparent), color-stop($focus-gradient, rgba(0, 0, 0, 0.05)), to(rgba(0, 0, 0, $focus-gradient-shade)));
+        background-image: -webkit-linear-gradient(transparent, rgba(0, 0, 0, 0.05) $focus-gradient, rgba(0, 0, 0, $focus-gradient-shade));
+        background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0.05) $focus-gradient, rgba(0, 0, 0, $focus-gradient-shade));
+        background-image: -o-linear-gradient(transparent, rgba(0, 0, 0, 0.05) $focus-gradient, rgba(0, 0, 0, $focus-gradient-shade));
+        background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.05) $focus-gradient, rgba(0, 0, 0, $focus-gradient-shade));
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, $focus-shade) inset;
     }
+}
 
+button {
     &.itsa-button::-moz-focus-inner { /* firefox focusring */
         border: 0;
     }
+}
 
+button {
     &.itsa-button-active:not(.readonly) {
-        box-shadow: 0 0 0 1px rgba(0,0,0, 0.8) inset, 0 0 $active-depth rgba(0,0,0, $active-shade) inset;
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.8) inset, 0 0 $active-depth rgba(0, 0, 0, $active-shade) inset;
     }
+}
 
+button {
     &.itsa-button:not(.itsa-button-togglebtn):not(.readonly):active:hover,
     &.itsa-button:not(.itsa-button-togglebtn):not(.readonly).itsa-button-hover:active,
     &.itsa-button:not(.itsa-button-togglebtn):not(.readonly):active:focus,
@@ -117,9 +134,11 @@ button {
     &.itsa-button-active:not(.itsa-button-togglebtn):not(.readonly):focus,
     &.itsa-button-active:not(.itsa-button-togglebtn):not(.readonly):hover:focus,
     &.itsa-button-active:not(.itsa-button-togglebtn):not(.readonly).itsa-button-hover:focus {
-        box-shadow: 0 0 0 1px rgba(0,0,0, 0.8) inset, 0 0 $active-depth rgba(0,0,0, $active-hover-shade) inset;
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.8) inset, 0 0 $active-depth rgba(0, 0, 0, $active-hover-shade) inset;
     }
+}
 
+button {
     &.itsa-button[disabled],
     &.itsa-button[disabled]:focus,
     &.itsa-button[disabled]:hover,
@@ -138,32 +157,41 @@ button {
     &.itsa-button[disabled].itsa-button-hover.itsa-button-active:focus {
         border: none;
         background-image: none !important;
-        filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+        filter: progid:dximagetransform.microsoft.gradient(enabled = false);
         filter: alpha(opacity=$disabled-opacity-IE);
         -khtml-opacity: $disabled-opacity;
         -moz-opacity: $disabled-opacity;
         opacity: $disabled-opacity;
-        cursor: not-allowed;
-        box-shadow: 0 0 0 1px rgba(0,0,0, $disabled-shade) inset !important;
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, $disabled-shade) inset !important;
         cursor: default;
     }
+}
 
+button {
     &.itsa-button-smoothrounded {
         border-radius: 2px;
     }
+}
 
+button {
     &.itsa-button-rounded {
         border-radius: 0.3em;
     }
+}
 
+button {
     &.itsa-button-heavyrounded {
         border-radius: 0.5em;
     }
+}
 
+button {
     &.itsa-button-oval {
         border-radius: 50%;
     }
+}
 
+button {
     &.itsa-button-halfoval {
         border-radius: 25%;
     }

@@ -18,7 +18,6 @@ require("itsa-dom");
 
 const React = require("react"),
     PropTypes = require("prop-types"),
-    ReactDom = require("react-dom"),
     utils = require("itsa-utils"),
     later = utils.later,
     async = utils.async,
@@ -74,7 +73,6 @@ class Button extends React.Component {
      */
     componentDidMount() {
         const instance = this;
-        instance._buttonNode = ReactDom.findDOMNode(instance);
         instance._mounted = true;
         instance._knownMobile = (("ontouchstart" in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0));
         if (instance.props.autoFocus) {
@@ -127,23 +125,23 @@ class Button extends React.Component {
               onClick = props.onClick;
         if (!props.disabled && !props.readOnly && !instance._keyDown && !this.state.mouseDown) { // don't double execute
             if (onClick || onMiddleClick || onRightClick) {
-                button = e.nativeEvent.button || 1;
-                leftClick = (button<=1);
-                middleClick = (button===2);
-                rightClick = (button===3);
+                button = e.nativeEvent.button || 0;
+                leftClick = (button===0);
+                middleClick = (button===1);
+                rightClick = (button===2);
                 if ((onClick && leftClick) || (onMiddleClick && middleClick) || (onRightClick && rightClick)) {
                     e.preventDefault();
                     // NOT element.focus or node.itsa_focus ! --> would have side-effects, besides, the node is in the view if it got clicked
                     instance._buttonNode.focus();
                 }
                 if (onClick && leftClick) {
-                    onClick();
+                    onClick(e);
                 }
                 if (middleClick && onMiddleClick) {
-                    onMiddleClick();
+                    onMiddleClick(e);
                 }
                 if (rightClick && onRightClick) {
-                    onRightClick();
+                    onRightClick(e);
                 }
             }
         }
@@ -166,6 +164,7 @@ class Button extends React.Component {
               isDirectResponse = (typeof directResponse===BOOLEAN) ? directResponse : props.directResponse;
 
         if (!props.disabled && !props.readOnly && instance._mounted) {
+            (typeof props.onKeyDown==='function') && props.onKeyDown(e);
             if (keyCode===27) {
                 // escape keyDown in case it was set
                 instance._keyDown = false;
@@ -208,13 +207,15 @@ class Button extends React.Component {
      * @since 0.0.1
      */
     handleKeyUp() {
+        const instance = this,
+            props = instance.props;
         // we must go async --> instance._keyDown cannot be set 'false' right away,
         // because the handleClick method needs to be processed first
         // if we don;t do this, props.onClick() would be executed twice when the spacebutton is pressed
+        (typeof props.onKeyUp==='function') && props.onKeyUp(e);
         async(() => {
-            const instance = this;
             instance._keyDown = false;
-            if ((typeof instance.props.toggled!==BOOLEAN) && instance.state.active) {
+            if ((typeof props.toggled!==BOOLEAN) && instance.state.active) {
                 instance._processKeyUp(true);
             }
         });
@@ -358,6 +359,7 @@ class Button extends React.Component {
                 onMouseDown={handleMouseDown}
                 onMouseOut={instance.handleMouseOut}
                 onMouseUp={handleMouseUp}
+                ref={node => instance._buttonNode = node}
                 role="button"
                 style={props.style}
                 tabIndex={props.tabIndex}

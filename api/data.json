@@ -55,7 +55,7 @@
     "classitems": [
         {
             "file": "lib/component.jsx",
-            "line": 56,
+            "line": 55,
             "description": "Blurs the Component.",
             "itemtype": "method",
             "name": "blur",
@@ -66,7 +66,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 69,
+            "line": 68,
             "description": "componentDidMount does some initialization.",
             "itemtype": "method",
             "name": "componentDidMount",
@@ -76,7 +76,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 85,
+            "line": 83,
             "description": "componentWilUnmount does some cleanup.",
             "itemtype": "method",
             "name": "componentWillUnmount",
@@ -86,7 +86,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 96,
+            "line": 94,
             "description": "Sets the focus on the Component.",
             "itemtype": "method",
             "name": "focus",
@@ -105,7 +105,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 114,
+            "line": 112,
             "description": "Callback-fn for the onClick-event.\nWill invoke `this.props.onChange`",
             "itemtype": "method",
             "name": "handleClick",
@@ -115,7 +115,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 152,
+            "line": 150,
             "description": "Callback-fn for the onKeyDown-event.",
             "itemtype": "method",
             "name": "handleKeyDown",
@@ -125,7 +125,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 204,
+            "line": 203,
             "description": "Callback-fn for the onKeyUp-event.",
             "itemtype": "method",
             "name": "handleKeyUp",
@@ -135,7 +135,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 223,
+            "line": 224,
             "description": "Callback-fn for the onMouseDown-event.",
             "itemtype": "method",
             "name": "handleMouseDown",
@@ -145,7 +145,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 260,
+            "line": 261,
             "description": "Callback-fn for the onMouseUp-event.",
             "itemtype": "method",
             "name": "handleMouseUp",
@@ -155,7 +155,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 279,
+            "line": 280,
             "description": "Callback-fn for the onClick-event.\nWill invoke `this.props.onChange`",
             "itemtype": "method",
             "name": "press",
@@ -171,7 +171,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 291,
+            "line": 292,
             "description": "React render-method --> renderes the Component.",
             "itemtype": "method",
             "name": "render",
@@ -184,7 +184,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 370,
+            "line": 372,
             "description": "Extracts the `data-*` attributes from props.",
             "itemtype": "method",
             "name": "_getDataAttrs",
@@ -199,7 +199,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 389,
+            "line": 391,
             "description": "React render-method --> renderes the Component.",
             "itemtype": "method",
             "name": "_processKeyUp",
@@ -225,7 +225,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 425,
+            "line": 427,
             "description": "Returns a save string",
             "itemtype": "method",
             "name": "_saveHTML",
@@ -246,7 +246,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 440,
+            "line": 442,
             "description": "Array with the keys that can press the button when focussed.\nDefault: [13, 32]",
             "itemtype": "property",
             "name": "activatedBy",
@@ -257,7 +257,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 450,
+            "line": 452,
             "description": "The aria-label. When not set, it will equal the buttonText",
             "itemtype": "property",
             "name": "aria-label",
@@ -268,7 +268,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 459,
+            "line": 461,
             "description": "Whether to autofocus the Component.",
             "itemtype": "property",
             "name": "autoFocus",
@@ -279,7 +279,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 468,
+            "line": 470,
             "description": "The Button-text. Will be escaped. If you need HTML, then use `buttonHTML` instead.",
             "itemtype": "property",
             "name": "buttonText",
@@ -290,7 +290,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 477,
+            "line": 479,
             "description": "The Button-text, retaining html-code. If you don't need HTML,\nthen `buttonText` is preferred.",
             "itemtype": "property",
             "name": "buttonHTML",
@@ -301,7 +301,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 487,
+            "line": 489,
             "description": "The time that the button retains in its `pressed-state` when activated by a key-press.\n\nDefault: 300ms",
             "itemtype": "property",
             "name": "buttonPressTime",
@@ -312,7 +312,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 498,
+            "line": 500,
             "description": "The class that should be set on the element",
             "itemtype": "property",
             "name": "className",
@@ -323,7 +323,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 507,
+            "line": 509,
             "description": "Whether the button resonses rapidly (keydown and mousedown).\nNote: native HTMLButtonElements don't resonse rapidly --> the onClick event happens on mouseUp.\n\nDefault: true",
             "itemtype": "property",
             "name": "directResponse",
@@ -334,7 +334,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 519,
+            "line": 521,
             "description": "Whether the button is disabled",
             "itemtype": "property",
             "name": "disabled",
@@ -345,7 +345,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 528,
+            "line": 530,
             "description": "The name-attribute of the button",
             "itemtype": "property",
             "name": "name",
@@ -356,7 +356,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 537,
+            "line": 539,
             "description": "Callback whenever the button gets clicked by the left mousebutton.",
             "itemtype": "property",
             "name": "onClick",
@@ -367,7 +367,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 546,
+            "line": 548,
             "description": "Callback wheneveer the button gets clicked by the middle mousebuttin.",
             "itemtype": "property",
             "name": "onMiddleClick",
@@ -378,7 +378,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 556,
+            "line": 558,
             "description": "Callback wheneveer the button gets clicked by the right mouse-button.",
             "itemtype": "property",
             "name": "onRightClick",
@@ -389,7 +389,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 565,
+            "line": 567,
             "description": "Whether the checkbox is readonly",
             "itemtype": "property",
             "name": "readOnly",
@@ -401,7 +401,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 575,
+            "line": 577,
             "description": "Whether keypress should show active status. (should be set `false` for file-uploadbuttons)\nDefault: true",
             "itemtype": "property",
             "name": "showActivated",
@@ -412,7 +412,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 585,
+            "line": 587,
             "description": "Inline style",
             "itemtype": "property",
             "name": "style",
@@ -423,7 +423,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 594,
+            "line": 596,
             "description": "The tabIndex",
             "itemtype": "property",
             "name": "tabIndex",
@@ -434,7 +434,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 603,
+            "line": 605,
             "description": "Whether the button is in a toggle-state.\nYou don;t need to use this directly: use the module ToggleButton instead.",
             "itemtype": "property",
             "name": "toggled",
@@ -445,7 +445,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 613,
+            "line": 615,
             "description": "The type of the button\nDefault: \"button\"",
             "itemtype": "property",
             "name": "children",

@@ -45,6 +45,7 @@ describe("Button tests", function () {
                   onMouseDown={function noRefCheck() {}}
                   onMouseOut={function noRefCheck() {}}
                   onMouseUp={function noRefCheck() {}}
+                  ref={function noRefCheck() {}}
                   role="button"
                   style={undefined}
                   tabIndex={undefined}
@@ -82,6 +83,7 @@ describe("Button tests", function () {
                   onMouseDown={undefined}
                   onMouseOut={function noRefCheck() {}}
                   onMouseUp={undefined}
+                  ref={function noRefCheck() {}}
                   role="button"
                   style={undefined}
                   tabIndex={2}
@@ -110,6 +112,7 @@ describe("Button tests", function () {
                   onMouseDown={function noRefCheck() {}}
                   onMouseOut={function noRefCheck() {}}
                   onMouseUp={function noRefCheck() {}}
+                  ref={function noRefCheck() {}}
                   role="button"
                   style={undefined}
                   tabIndex={undefined}
@@ -138,6 +141,7 @@ describe("Button tests", function () {
                   onMouseDown={function noRefCheck() {}}
                   onMouseOut={function noRefCheck() {}}
                   onMouseUp={function noRefCheck() {}}
+                  ref={function noRefCheck() {}}
                   role="button"
                   style={undefined}
                   tabIndex={undefined}
@@ -168,6 +172,7 @@ describe("Button tests", function () {
                   onMouseDown={function noRefCheck() {}}
                   onMouseOut={function noRefCheck() {}}
                   onMouseUp={function noRefCheck() {}}
+                  ref={function noRefCheck() {}}
                   role="button"
                   style={undefined}
                   tabIndex={undefined}
@@ -196,6 +201,7 @@ describe("Button tests", function () {
                   onMouseDown={function noRefCheck() {}}
                   onMouseOut={function noRefCheck() {}}
                   onMouseUp={function noRefCheck() {}}
+                  ref={function noRefCheck() {}}
                   role="button"
                   style={undefined}
                   tabIndex={undefined}
@@ -226,6 +232,7 @@ describe("Button tests", function () {
                   onMouseDown={function noRefCheck() {}}
                   onMouseOut={function noRefCheck() {}}
                   onMouseUp={function noRefCheck() {}}
+                  ref={function noRefCheck() {}}
                   role="button"
                   style={undefined}
                   tabIndex={undefined}

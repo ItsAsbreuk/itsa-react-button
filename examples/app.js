@@ -22103,8 +22103,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../node_modules/css-loader/index.js!../node_modules/sass-loader/index.js!./component.scss", function() {
-				var newContent = require("!!../node_modules/css-loader/index.js!../node_modules/sass-loader/index.js!./component.scss");
+			module.hot.accept("!!../node_modules/css-loader/index.js!../node_modules/sass-loader/lib/loader.js!./component.scss", function() {
+				var newContent = require("!!../node_modules/css-loader/index.js!../node_modules/sass-loader/lib/loader.js!./component.scss");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -22122,7 +22122,7 @@
 
 
 	// module
-	exports.push([module.id, "button.itsa-button {\n  margin: 0;\n  padding: 0.5em 1em;\n  font: inherit;\n  /* 2 */\n  font-family: inherit;\n  font-size: 100%;\n  color: #444;\n  /* rgba not supported (IE 8) */\n  color: rgba(0, 0, 0, 0.8);\n  /* rgba supported */\n  border: 1px solid #999;\n  /*IE 6/7/8*/\n  border: none transparent;\n  /*IE9 + everything else*/\n  background-color: #E6E6E6;\n  text-decoration: none;\n  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15) inset;\n  display: inline-block;\n  position: relative;\n  vertical-align: middle;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  box-sizing: border-box;\n  -webkit-touch-callout: none;\n  -webkit-user-select: none;\n  -khtml-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  text-transform: none;\n  line-height: normal;\n  white-space: nowrap;\n  vertical-align: baseline;\n  text-align: center;\n  cursor: pointer; }\n\nbutton.itsa-button.readonly {\n  cursor: default; }\n\nbutton.itsa-button-primary {\n  background-color: #0078E7;\n  color: #FFF; }\n\nbutton.itsa-button-toggled {\n  background-color: #0078E7;\n  color: #FFF; }\n\nbutton.itsa-button:hover:not(.readonly), button.itsa-button.itsa-button-hover:not(.readonly), button.itsa-button:hover:focus:not(.readonly), button.itsa-button.itsa-button-hover:focus:not(.readonly) {\n  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#1a000000',GradientType=0);\n  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(transparent), color-stop(40%, rgba(0, 0, 0, 0.05)), to(rgba(0, 0, 0, 0.15)));\n  background-image: -webkit-linear-gradient(transparent, rgba(0, 0, 0, 0.05) 40%, rgba(0, 0, 0, 0.15));\n  background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0.05) 40%, rgba(0, 0, 0, 0.15));\n  background-image: -o-linear-gradient(transparent, rgba(0, 0, 0, 0.05) 40%, rgba(0, 0, 0, 0.15));\n  background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.05) 40%, rgba(0, 0, 0, 0.15));\n  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.8) inset; }\n\nbutton.itsa-button:focus {\n  outline: 0; }\n\nbutton.itsa-button:focus:not(.readonly) {\n  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#1a000000',GradientType=0);\n  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(transparent), color-stop(40%, rgba(0, 0, 0, 0.05)), to(rgba(0, 0, 0, 0.1)));\n  background-image: -webkit-linear-gradient(transparent, rgba(0, 0, 0, 0.05) 40%, rgba(0, 0, 0, 0.1));\n  background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0.05) 40%, rgba(0, 0, 0, 0.1));\n  background-image: -o-linear-gradient(transparent, rgba(0, 0, 0, 0.05) 40%, rgba(0, 0, 0, 0.1));\n  background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.05) 40%, rgba(0, 0, 0, 0.1));\n  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.6) inset; }\n\nbutton.itsa-button::-moz-focus-inner {\n  /* firefox focusring */\n  border: 0; }\n\nbutton.itsa-button-active:not(.readonly) {\n  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.8) inset, 0 0 10px rgba(0, 0, 0, 0.4) inset; }\n\nbutton.itsa-button:not(.itsa-button-togglebtn):not(.readonly):active:hover, button.itsa-button:not(.itsa-button-togglebtn):not(.readonly).itsa-button-hover:active, button.itsa-button:not(.itsa-button-togglebtn):not(.readonly):active:focus, button.itsa-button:not(.itsa-button-togglebtn):not(.readonly):active:hover:focus, button.itsa-button:not(.itsa-button-togglebtn):not(.readonly).itsa-button-hover:active:focus, button.itsa-button-active:not(.itsa-button-togglebtn):not(.readonly):hover, button.itsa-button-active:not(.itsa-button-togglebtn):not(.readonly).itsa-button-hover, button.itsa-button-active:not(.itsa-button-togglebtn):not(.readonly):focus, button.itsa-button-active:not(.itsa-button-togglebtn):not(.readonly):hover:focus, button.itsa-button-active:not(.itsa-button-togglebtn):not(.readonly).itsa-button-hover:focus {\n  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.8) inset, 0 0 10px black inset; }\n\nbutton.itsa-button[disabled], button.itsa-button[disabled]:focus, button.itsa-button[disabled]:hover, button.itsa-button[disabled].itsa-button-hover, button.itsa-button[disabled]:active, button.itsa-button[disabled].itsa-button-active, button.itsa-button[disabled]:active:hover, button.itsa-button[disabled].itsa-button-hover:active, button.itsa-button[disabled].itsa-button-active:hover, button.itsa-button[disabled].itsa-button-active.itsa-button-hover, button.itsa-button[disabled]:active:focus, button.itsa-button[disabled].itsa-button-active:focus, button.itsa-button[disabled]:active:focus:hover, button.itsa-button[disabled].itsa-button-hover:active:focus, button.itsa-button[disabled].itsa-button-active:focus:hover, button.itsa-button[disabled].itsa-button-hover.itsa-button-active:focus {\n  border: none;\n  background-image: none !important;\n  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);\n  filter: alpha(opacity=60);\n  -khtml-opacity: 0.6;\n  -moz-opacity: 0.6;\n  opacity: 0.6;\n  cursor: not-allowed;\n  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15) inset !important;\n  cursor: default; }\n\nbutton.itsa-button-smoothrounded {\n  border-radius: 2px; }\n\nbutton.itsa-button-rounded {\n  border-radius: 0.3em; }\n\nbutton.itsa-button-heavyrounded {\n  border-radius: 0.5em; }\n\nbutton.itsa-button-oval {\n  border-radius: 50%; }\n\nbutton.itsa-button-halfoval {\n  border-radius: 25%; }\n", ""]);
+	exports.push([module.id, "button.itsa-button {\n  margin: 0;\n  padding: 0.5em 1em;\n  font: inherit;\n  /* 2 */\n  font-family: inherit;\n  font-size: 100%;\n  color: #444;\n  /* rgba not supported (IE 8) */\n  color: rgba(0, 0, 0, 0.8);\n  /* rgba supported */\n  border: 1px solid #999;\n  /* IE 6/7/8 */\n  border: none transparent;\n  /* IE9 + everything else */\n  background-color: #E6E6E6;\n  text-decoration: none;\n  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15) inset;\n  display: inline-block;\n  position: relative;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  box-sizing: border-box;\n  -webkit-touch-callout: none;\n  -webkit-user-select: none;\n  -khtml-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  text-transform: none;\n  line-height: normal;\n  white-space: nowrap;\n  vertical-align: baseline;\n  text-align: center;\n  cursor: pointer; }\n\nbutton.itsa-button.readonly {\n  cursor: default; }\n\nbutton.itsa-button-primary {\n  background-color: #0078E7;\n  color: #FFF; }\n\nbutton.itsa-button-toggled {\n  background-color: #0078E7;\n  color: #FFF; }\n\nbutton.itsa-button:hover:not(.readonly), button.itsa-button.itsa-button-hover:not(.readonly), button.itsa-button:hover:focus:not(.readonly), button.itsa-button.itsa-button-hover:focus:not(.readonly) {\n  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#00000000', endColorstr='#1a000000', GradientType=0);\n  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(transparent), color-stop(40%, rgba(0, 0, 0, 0.05)), to(rgba(0, 0, 0, 0.15)));\n  background-image: -webkit-linear-gradient(transparent, rgba(0, 0, 0, 0.05) 40%, rgba(0, 0, 0, 0.15));\n  background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0.05) 40%, rgba(0, 0, 0, 0.15));\n  background-image: -o-linear-gradient(transparent, rgba(0, 0, 0, 0.05) 40%, rgba(0, 0, 0, 0.15));\n  background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.05) 40%, rgba(0, 0, 0, 0.15));\n  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.8) inset; }\n\nbutton.itsa-button:focus {\n  outline: 0; }\n\nbutton.itsa-button:focus:not(.readonly) {\n  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#00000000', endColorstr='#1a000000', GradientType=0);\n  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(transparent), color-stop(40%, rgba(0, 0, 0, 0.05)), to(rgba(0, 0, 0, 0.1)));\n  background-image: -webkit-linear-gradient(transparent, rgba(0, 0, 0, 0.05) 40%, rgba(0, 0, 0, 0.1));\n  background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0.05) 40%, rgba(0, 0, 0, 0.1));\n  background-image: -o-linear-gradient(transparent, rgba(0, 0, 0, 0.05) 40%, rgba(0, 0, 0, 0.1));\n  background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.05) 40%, rgba(0, 0, 0, 0.1));\n  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.6) inset; }\n\nbutton.itsa-button::-moz-focus-inner {\n  /* firefox focusring */\n  border: 0; }\n\nbutton.itsa-button-active:not(.readonly) {\n  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.8) inset, 0 0 10px rgba(0, 0, 0, 0.4) inset; }\n\nbutton.itsa-button:not(.itsa-button-togglebtn):not(.readonly):active:hover, button.itsa-button:not(.itsa-button-togglebtn):not(.readonly).itsa-button-hover:active, button.itsa-button:not(.itsa-button-togglebtn):not(.readonly):active:focus, button.itsa-button:not(.itsa-button-togglebtn):not(.readonly):active:hover:focus, button.itsa-button:not(.itsa-button-togglebtn):not(.readonly).itsa-button-hover:active:focus, button.itsa-button-active:not(.itsa-button-togglebtn):not(.readonly):hover, button.itsa-button-active:not(.itsa-button-togglebtn):not(.readonly).itsa-button-hover, button.itsa-button-active:not(.itsa-button-togglebtn):not(.readonly):focus, button.itsa-button-active:not(.itsa-button-togglebtn):not(.readonly):hover:focus, button.itsa-button-active:not(.itsa-button-togglebtn):not(.readonly).itsa-button-hover:focus {\n  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.8) inset, 0 0 10px black inset; }\n\nbutton.itsa-button[disabled], button.itsa-button[disabled]:focus, button.itsa-button[disabled]:hover, button.itsa-button[disabled].itsa-button-hover, button.itsa-button[disabled]:active, button.itsa-button[disabled].itsa-button-active, button.itsa-button[disabled]:active:hover, button.itsa-button[disabled].itsa-button-hover:active, button.itsa-button[disabled].itsa-button-active:hover, button.itsa-button[disabled].itsa-button-active.itsa-button-hover, button.itsa-button[disabled]:active:focus, button.itsa-button[disabled].itsa-button-active:focus, button.itsa-button[disabled]:active:focus:hover, button.itsa-button[disabled].itsa-button-hover:active:focus, button.itsa-button[disabled].itsa-button-active:focus:hover, button.itsa-button[disabled].itsa-button-hover.itsa-button-active:focus {\n  border: none;\n  background-image: none !important;\n  filter: progid:dximagetransform.microsoft.gradient(enabled = false);\n  filter: alpha(opacity=60);\n  -khtml-opacity: 0.6;\n  -moz-opacity: 0.6;\n  opacity: 0.6;\n  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15) inset !important;\n  cursor: default; }\n\nbutton.itsa-button-smoothrounded {\n  border-radius: 2px; }\n\nbutton.itsa-button-rounded {\n  border-radius: 0.3em; }\n\nbutton.itsa-button-heavyrounded {\n  border-radius: 0.5em; }\n\nbutton.itsa-button-oval {\n  border-radius: 50%; }\n\nbutton.itsa-button-halfoval {\n  border-radius: 25%; }\n", ""]);
 
 	// exports
 
@@ -22470,7 +22470,6 @@
 
 	var React = __webpack_require__(1),
 	    PropTypes = __webpack_require__(211),
-	    ReactDom = __webpack_require__(37),
 	    utils = __webpack_require__(191),
 	    later = utils.later,
 	    async = utils.async,
@@ -22539,7 +22538,6 @@
 	        key: "componentDidMount",
 	        value: function componentDidMount() {
 	            var instance = this;
-	            instance._buttonNode = ReactDom.findDOMNode(instance);
 	            instance._mounted = true;
 	            instance._knownMobile = "ontouchstart" in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
 	            if (instance.props.autoFocus) {
@@ -22608,23 +22606,23 @@
 	            if (!props.disabled && !props.readOnly && !instance._keyDown && !this.state.mouseDown) {
 	                // don't double execute
 	                if (onClick || onMiddleClick || onRightClick) {
-	                    button = e.nativeEvent.button || 1;
-	                    leftClick = button <= 1;
-	                    middleClick = button === 2;
-	                    rightClick = button === 3;
+	                    button = e.nativeEvent.button || 0;
+	                    leftClick = button === 0;
+	                    middleClick = button === 1;
+	                    rightClick = button === 2;
 	                    if (onClick && leftClick || onMiddleClick && middleClick || onRightClick && rightClick) {
 	                        e.preventDefault();
 	                        // NOT element.focus or node.itsa_focus ! --> would have side-effects, besides, the node is in the view if it got clicked
 	                        instance._buttonNode.focus();
 	                    }
 	                    if (onClick && leftClick) {
-	                        onClick();
+	                        onClick(e);
 	                    }
 	                    if (middleClick && onMiddleClick) {
-	                        onMiddleClick();
+	                        onMiddleClick(e);
 	                    }
 	                    if (rightClick && onRightClick) {
-	                        onRightClick();
+	                        onRightClick(e);
 	                    }
 	                }
 	            }
@@ -22651,6 +22649,7 @@
 	                isDirectResponse = (typeof directResponse === "undefined" ? "undefined" : _typeof(directResponse)) === BOOLEAN ? directResponse : props.directResponse;
 
 	            if (!props.disabled && !props.readOnly && instance._mounted) {
+	                typeof props.onKeyDown === 'function' && props.onKeyDown(e);
 	                if (keyCode === 27) {
 	                    // escape keyDown in case it was set
 	                    instance._keyDown = false;
@@ -22694,15 +22693,15 @@
 	    }, {
 	        key: "handleKeyUp",
 	        value: function handleKeyUp() {
-	            var _this2 = this;
-
+	            var instance = this,
+	                props = instance.props;
 	            // we must go async --> instance._keyDown cannot be set 'false' right away,
 	            // because the handleClick method needs to be processed first
 	            // if we don;t do this, props.onClick() would be executed twice when the spacebutton is pressed
+	            typeof props.onKeyUp === 'function' && props.onKeyUp(e);
 	            async(function () {
-	                var instance = _this2;
 	                instance._keyDown = false;
-	                if (_typeof(instance.props.toggled) !== BOOLEAN && instance.state.active) {
+	                if (_typeof(props.toggled) !== BOOLEAN && instance.state.active) {
 	                    instance._processKeyUp(true);
 	                }
 	            });
@@ -22863,6 +22862,9 @@
 	                    onMouseDown: handleMouseDown,
 	                    onMouseOut: instance.handleMouseOut,
 	                    onMouseUp: handleMouseUp,
+	                    ref: function ref(node) {
+	                        return instance._buttonNode = node;
+	                    },
 	                    role: "button",
 	                    style: props.style,
 	                    tabIndex: props.tabIndex,
