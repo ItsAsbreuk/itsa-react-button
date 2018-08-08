@@ -10662,6 +10662,9 @@ var Button = function (_React$Component) {
         instance.handleKeyUp = instance.handleKeyUp.bind(instance);
         instance.handleMouseDown = instance.handleMouseDown.bind(instance);
         instance.handleMouseOut = instance.handleMouseOut.bind(instance);
+        instance.handleMouseOver = instance.handleMouseOver.bind(instance);
+        instance.handleMouseEnter = instance.handleMouseEnter.bind(instance);
+        instance.handleMouseLeave = instance.handleMouseLeave.bind(instance);
         instance.handleMouseUp = instance.handleMouseUp.bind(instance);
         instance.press = instance.press.bind(instance);
         instance._getDataAttrs = instance._getDataAttrs.bind(instance);
@@ -10720,6 +10723,14 @@ var Button = function (_React$Component) {
             this._mounted = false;
             this._focusLater && this._focusLater.cancel();
         }
+    }, {
+        key: "componentWillReceiveProps",
+        value: function componentWillReceiveProps(nextProps) {
+            var instance = this;
+            if (nextProps.disabled && !this.props.disabled) {
+                async(instance.handleMouseUp);
+            }
+        }
 
         /**
          * Sets the focus on the Component.
@@ -10753,7 +10764,7 @@ var Button = function (_React$Component) {
 
     }, {
         key: "handleClick",
-        value: function handleClick(e) {
+        value: function handleClick(e, byMouseDown) {
             var button = void 0,
                 leftClick = void 0,
                 middleClick = void 0,
@@ -10763,7 +10774,7 @@ var Button = function (_React$Component) {
                 onMiddleClick = props.onMiddleClick,
                 onRightClick = props.onRightClick,
                 onClick = props.onClick;
-            if (!props.disabled && !props.readOnly && !instance._keyDown && !this.state.mouseDown) {
+            if (!props.disabled && !props.readOnly && !instance._keyDown && (!this.state.mouseDown || byMouseDown === true)) {
                 // don't double execute
                 if (onClick || onMiddleClick || onRightClick) {
                     button = e.nativeEvent.button || 0;
@@ -10879,11 +10890,12 @@ var Button = function (_React$Component) {
         value: function handleMouseDown(e) {
             var instance = this,
                 props = instance.props;
+
             if (!props.disabled && !props.readOnly && instance._mounted) {
-                instance.handleClick(e);
+                instance.handleClick(e, true);
                 async(function () {
-                    // check if still mounted
-                    if (instance._mounted) {
+                    // check if still mounted AND if still not disabled or readonly!
+                    if (!props.disabled && !props.readOnly && instance._mounted) {
                         instance._mouseDown = true;
                         instance.setState({
                             active: true,
@@ -10903,9 +10915,29 @@ var Button = function (_React$Component) {
             }
         }
     }, {
+        key: "handleMouseEnter",
+        value: function handleMouseEnter(e) {
+            var onMouseEnter = this.props.onMouseEnter;
+            onMouseEnter && onMouseEnter(e);
+        }
+    }, {
+        key: "handleMouseLeave",
+        value: function handleMouseLeave(e) {
+            var onMouseLeave = this.props.onMouseLeave;
+            onMouseLeave && onMouseLeave(e);
+        }
+    }, {
+        key: "handleMouseOver",
+        value: function handleMouseOver(e) {
+            var onMouseOver = this.props.onMouseOver;
+            onMouseOver && onMouseOver(e);
+        }
+    }, {
         key: "handleMouseOut",
-        value: function handleMouseOut() {
+        value: function handleMouseOut(e) {
+            var onMouseOut = this.props.onMouseOut;
             this.handleMouseUp();
+            onMouseOut && onMouseOut(e);
         }
 
         /**
@@ -10994,16 +11026,19 @@ var Button = function (_React$Component) {
                 buttonText = saveButtonText;
             }
 
+            if (directResponse || isToggleButton) {
+                handleMouseUp = instance.handleMouseUp;
+            }
+            handleKeyUp = instance.handleKeyUp;
             if (!disabled) {
                 if (directResponse || isToggleButton) {
                     handleMouseDown = instance.handleMouseDown;
-                    handleMouseUp = instance.handleMouseUp;
                 } else {
                     handleClick = instance.handleClick;
                 }
                 handleKeyDown = instance.handleKeyDown;
-                handleKeyUp = instance.handleKeyUp;
             }
+            handleMouseUp = instance.handleMouseUp;
 
             return React.createElement(
                 "button",
@@ -11020,7 +11055,10 @@ var Button = function (_React$Component) {
                     onKeyDown: handleKeyDown,
                     onKeyUp: handleKeyUp,
                     onMouseDown: handleMouseDown,
+                    onMouseEnter: instance.handleMouseEnter,
+                    onMouseLeave: instance.handleMouseLeave,
                     onMouseOut: instance.handleMouseOut,
+                    onMouseOver: instance.handleMouseOver,
                     onMouseUp: handleMouseUp,
                     ref: function ref(node) {
                         return instance._buttonNode = node;
@@ -11230,6 +11268,14 @@ Button.propTypes = {
      * @since 0.0.1
     */
     onMiddleClick: PropTypes.func,
+
+    onMouseEnter: PropTypes.func,
+
+    onMouseLeave: PropTypes.func,
+
+    onMouseOver: PropTypes.func,
+
+    onMouseOut: PropTypes.func,
 
     /**
      * Callback wheneveer the button gets clicked by the right mouse-button.

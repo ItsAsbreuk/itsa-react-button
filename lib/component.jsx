@@ -45,6 +45,9 @@ class Button extends React.Component {
         instance.handleKeyUp = instance.handleKeyUp.bind(instance);
         instance.handleMouseDown = instance.handleMouseDown.bind(instance);
         instance.handleMouseOut = instance.handleMouseOut.bind(instance);
+        instance.handleMouseOver = instance.handleMouseOver.bind(instance);
+        instance.handleMouseEnter = instance.handleMouseEnter.bind(instance);
+        instance.handleMouseLeave = instance.handleMouseLeave.bind(instance);
         instance.handleMouseUp = instance.handleMouseUp.bind(instance);
         instance.press = instance.press.bind(instance);
         instance._getDataAttrs = instance._getDataAttrs.bind(instance);
@@ -91,6 +94,13 @@ class Button extends React.Component {
         this._focusLater && this._focusLater.cancel();
     }
 
+    componentWillReceiveProps(nextProps) {
+        const instance = this;
+        if (nextProps.disabled && !this.props.disabled) {
+            async(instance.handleMouseUp);
+        }
+    }
+
     /**
      * Sets the focus on the Component.
      *
@@ -116,14 +126,14 @@ class Button extends React.Component {
      * @method handleClick
      * @since 0.0.1
      */
-    handleClick(e) {
+    handleClick(e, byMouseDown) {
         let button, leftClick, middleClick, rightClick;
         const instance = this,
-              props = instance.props,
-              onMiddleClick = props.onMiddleClick,
-              onRightClick = props.onRightClick,
-              onClick = props.onClick;
-        if (!props.disabled && !props.readOnly && !instance._keyDown && !this.state.mouseDown) { // don't double execute
+            props = instance.props,
+            onMiddleClick = props.onMiddleClick,
+            onRightClick = props.onRightClick,
+            onClick = props.onClick;
+        if (!props.disabled && !props.readOnly && !instance._keyDown && (!this.state.mouseDown || (byMouseDown===true))) { // don't double execute
             if (onClick || onMiddleClick || onRightClick) {
                 button = e.nativeEvent.button || 0;
                 leftClick = (button===0);
@@ -230,11 +240,12 @@ class Button extends React.Component {
     handleMouseDown(e) {
         const instance = this,
             props = instance.props;
+
         if (!props.disabled && !props.readOnly && instance._mounted) {
-            instance.handleClick(e);
+            instance.handleClick(e, true);
             async(() => {
-                // check if still mounted
-                if (instance._mounted) {
+                // check if still mounted AND if still not disabled or readonly!
+                if (!props.disabled && !props.readOnly && instance._mounted) {
                     instance._mouseDown = true;
                     instance.setState({
                         active: true,
@@ -254,8 +265,25 @@ class Button extends React.Component {
         }
     }
 
-    handleMouseOut() {
+    handleMouseEnter(e) {
+        const onMouseEnter = this.props.onMouseEnter;
+        onMouseEnter && onMouseEnter(e);
+    }
+
+    handleMouseLeave(e) {
+        const onMouseLeave = this.props.onMouseLeave;
+        onMouseLeave && onMouseLeave(e);
+    }
+
+    handleMouseOver(e) {
+        const onMouseOver = this.props.onMouseOver;
+        onMouseOver && onMouseOver(e);
+    }
+
+    handleMouseOut(e) {
+        const onMouseOut = this.props.onMouseOut;
         this.handleMouseUp();
+        onMouseOut && onMouseOut(e);
     }
 
     /**
@@ -331,17 +359,20 @@ class Button extends React.Component {
             buttonText = saveButtonText;
         }
 
+        if (directResponse || isToggleButton) {
+            handleMouseUp = instance.handleMouseUp;
+        }
+        handleKeyUp = instance.handleKeyUp;
         if (!disabled) {
             if (directResponse || isToggleButton) {
                 handleMouseDown = instance.handleMouseDown;
-                handleMouseUp = instance.handleMouseUp;
             }
             else {
                 handleClick = instance.handleClick;
             }
             handleKeyDown = instance.handleKeyDown;
-            handleKeyUp = instance.handleKeyUp;
         }
+        handleMouseUp = instance.handleMouseUp;
 
         return (
             <button {...instance._getDataAttrs()}
@@ -357,7 +388,10 @@ class Button extends React.Component {
                 onKeyDown={handleKeyDown}
                 onKeyUp={handleKeyUp}
                 onMouseDown={handleMouseDown}
+                onMouseEnter={instance.handleMouseEnter}
+                onMouseLeave={instance.handleMouseLeave}
                 onMouseOut={instance.handleMouseOut}
+                onMouseOver={instance.handleMouseOver}
                 onMouseUp={handleMouseUp}
                 ref={node => instance._buttonNode = node}
                 role="button"
@@ -554,6 +588,13 @@ Button.propTypes = {
     */
     onMiddleClick: PropTypes.func,
 
+    onMouseEnter: PropTypes.func,
+
+    onMouseLeave: PropTypes.func,
+
+    onMouseOver: PropTypes.func,
+
+    onMouseOut: PropTypes.func,
 
     /**
      * Callback wheneveer the button gets clicked by the right mouse-button.
